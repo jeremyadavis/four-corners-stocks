@@ -16,21 +16,35 @@ body {
 
 .navigation-container {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100px;
   height: 100px;
   overflow: visible;
   padding: 5px;
 }
 
+.tl-container {
+  top: 0;
+  left: 0;
+}
+
+.tr-container {
+  top: 0;
+  right: 0;
+}
+
 .quarter-circle {
   position: absolute;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+/* Top Left Quarter Circles */
+.TL1,
+.TL2,
+.TL3 {
   top: 0;
   left: 0;
   border-radius: 0 0 100% 0;
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
 }
 
 .TL1 {
@@ -49,6 +63,33 @@ body {
   width: 100px;
   height: 100px;
   background-color: #e63946; /* Red */
+}
+
+/* Top Right Quarter Circles */
+.TR1,
+.TR2,
+.TR3 {
+  top: 0;
+  right: 0;
+  border-radius: 0 0 0 100%;
+}
+
+.TR1 {
+  width: 50px;
+  height: 50px;
+  background-color: #a8dadc; /* Light blue */
+}
+
+.TR2 {
+  width: 75px;
+  height: 75px;
+  background-color: #457b9d; /* Medium blue */
+}
+
+.TR3 {
+  width: 100px;
+  height: 100px;
+  background-color: #1d3557; /* Dark blue */
 }
 
 .active {
