@@ -4,18 +4,23 @@ A web application that demonstrates a unique quarter-circle navigation system fo
 
 ## Features
 
-- Concentric quarter-circle navigation in the top-left corner
-- Keyboard navigation using arrow keys
+- Concentric quarter-circle navigation in the top-left and top-right corners
+- Keyboard navigation using arrow keys (up/down/left/right)
 - Visual feedback for the currently selected page
 
 ## Navigation
 
 - **Top Left (TL) Navigation:**
-
   - TL1: Inner light gray circle (smallest)
-  - TL2: Middle dark gray circle
+  - TL2: Middle dark gray circle (medium)
   - TL3: Outer red circle (largest)
 
+- **Top Right (TR) Navigation:**
+  - TR1: Inner light blue circle (smallest)
+  - TR2: Middle medium blue circle (medium)
+  - TR3: Outer dark blue circle (largest)
+
+- Use **LEFT/RIGHT** arrow keys to switch between Top-Left and Top-Right navigation sets
 - Use **UP** arrow key to navigate to smaller/inner circles
 - Use **DOWN** arrow key to navigate to larger/outer circles
 - Click directly on any circle to select it
