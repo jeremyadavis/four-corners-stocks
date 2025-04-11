@@ -4,7 +4,7 @@ A web application that demonstrates a unique quarter-circle navigation system fo
 
 ## Features
 
-- Concentric quarter-circle navigation in the top-left, top-right, and bottom-left corners
+- Concentric quarter-circle navigation in all four corners (top-left, top-right, bottom-left, bottom-right)
 - Keyboard navigation using arrow keys (up/down/left/right)
 - Visual feedback for the currently selected page
 - Contextual up/down navigation that changes behavior based on corner position
@@ -24,13 +24,19 @@ A web application that demonstrates a unique quarter-circle navigation system fo
   - TR3: Outer dark blue circle (largest)
 
 - **Bottom Left (BL) Navigation:**
+
   - BL1: Inner light green-blue circle (smallest)
   - BL2: Middle medium green-blue circle (medium)
   - BL3: Outer teal circle (largest)
 
+- **Bottom Right (BR) Navigation:**
+  - BR1: Inner light orange circle (smallest)
+  - BR2: Middle pink circle (medium)
+  - BR3: Outer mauve circle (largest)
+
 ### Navigation Controls
 
-- Use **LEFT/RIGHT** arrow keys to cycle between all corner navigation sets
+- Use **LEFT/RIGHT** arrow keys to cycle between all corner navigation sets (TL → TR → BL → BR → TL)
 - **Top Corners Navigation:**
   - **UP** arrow key: Navigate to smaller/inner circles
   - **DOWN** arrow key: Navigate to larger/outer circles

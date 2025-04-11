@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updatePageVisibility();
 
   // Define navigation order for cycling between corners
-  const navigationOrder = ['TL', 'TR', 'BL']; // Will add 'BR' later
+  const navigationOrder = ['TL', 'TR', 'BL', 'BR']; // Complete navigation cycle
 
   // Check if a set is in the top half or bottom half
   function isTopSet(set) {
@@ -123,6 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const bl1 = document.querySelector('.BL1');
     const bl2 = document.querySelector('.BL2');
     const bl3 = document.querySelector('.BL3');
+    const br1 = document.querySelector('.BR1');
+    const br2 = document.querySelector('.BR2');
+    const br3 = document.querySelector('.BR3');
 
     // Ensure consistent z-index ordering
     tl1.style.zIndex = 3; // Innermost circle always on top
@@ -134,5 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
     bl1.style.zIndex = 3; // Innermost circle always on top
     bl2.style.zIndex = 2; // Middle circle
     bl3.style.zIndex = 1; // Outermost circle always at bottom
+    br1.style.zIndex = 3; // Innermost circle always on top
+    br2.style.zIndex = 2; // Middle circle
+    br3.style.zIndex = 1; // Outermost circle always at bottom
   }
 });
