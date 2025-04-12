@@ -1,42 +1,50 @@
 # Four Corners Stocks
 
-A web application that demonstrates a unique quarter-circle navigation system for financial data visualization.
+A web application that demonstrates a unique quarter-circle navigation system for financial data visualization based on a dimensional analysis approach.
+
+## Dimensional Analysis Matrix
+
+The application organizes stock analysis across two key dimensions:
+| | **Quantitative** | **Qualitative** |
+|--------------------|----------------------------------|--------------------------------|
+| **Fundamentals** | **(QTF) Quantitative Fundamentals** | **(QLF) Qualitative Fundamentals** |
+| **Technicals** | **(QTT) Quantitative Technicals** | **(QLT) Qualitative Technicals** |
 
 ## Features
 
-- Concentric quarter-circle navigation in all four corners (top-left, top-right, bottom-left, bottom-right)
+- Concentric quarter-circle navigation in all four corners representing different analysis dimensions
 - Keyboard navigation using arrow keys (up/down/left/right)
 - Visual feedback for the currently selected page
 - Contextual up/down navigation that changes behavior based on corner position
 
 ## Navigation
 
-- **Top Left (TL) Navigation:**
+- **Quantitative Fundamentals (QTF) - Top Left:**
 
-  - TL1: Inner light gray circle (smallest)
-  - TL2: Middle dark gray circle (medium)
-  - TL3: Outer red circle (largest)
+  - QTF1: Inner light gray circle (smallest)
+  - QTF2: Middle dark gray circle (medium)
+  - QTF3: Outer red circle (largest)
 
-- **Top Right (TR) Navigation:**
+- **Qualitative Fundamentals (QLF) - Top Right:**
 
-  - TR1: Inner light blue circle (smallest)
-  - TR2: Middle medium blue circle (medium)
-  - TR3: Outer dark blue circle (largest)
+  - QLF1: Inner light blue circle (smallest)
+  - QLF2: Middle medium blue circle (medium)
+  - QLF3: Outer dark blue circle (largest)
 
-- **Bottom Left (BL) Navigation:**
+- **Quantitative Technicals (QTT) - Bottom Left:**
 
-  - BL1: Inner light green-blue circle (smallest)
-  - BL2: Middle medium green-blue circle (medium)
-  - BL3: Outer teal circle (largest)
+  - QTT1: Inner light green-blue circle (smallest)
+  - QTT2: Middle medium green-blue circle (medium)
+  - QTT3: Outer teal circle (largest)
 
-- **Bottom Right (BR) Navigation:**
-  - BR1: Inner light orange circle (smallest)
-  - BR2: Middle pink circle (medium)
-  - BR3: Outer mauve circle (largest)
+- **Qualitative Technicals (QLT) - Bottom Right:**
+  - QLT1: Inner light orange circle (smallest)
+  - QLT2: Middle pink circle (medium)
+  - QLT3: Outer mauve circle (largest)
 
 ### Navigation Controls
 
-- Use **LEFT/RIGHT** arrow keys to cycle between all corner navigation sets (TL → TR → BL → BR → TL)
+- Use **LEFT/RIGHT** arrow keys to cycle between all corner navigation sets (QTF → QLF → QTT → QLT → QTF)
 - **Top Corners Navigation:**
   - **UP** arrow key: Navigate to smaller/inner circles
   - **DOWN** arrow key: Navigate to larger/outer circles
@@ -44,6 +52,13 @@ A web application that demonstrates a unique quarter-circle navigation system fo
   - **UP** arrow key: Navigate to larger/outer circles
   - **DOWN** arrow key: Navigate to smaller/inner circles
 - Click directly on any circle to select it
+
+## Dimensions Explained
+
+- **Quantitative Fundamentals (QTF):** Numerical data about a company's financial performance (e.g., revenue, profit margins, P/E ratio)
+- **Qualitative Fundamentals (QLF):** Non-numerical assessments of a company's strengths (e.g., management quality, competitive advantage, industry trends)
+- **Quantitative Technicals (QTT):** Numerical price and volume data (e.g., moving averages, RSI, MACD)
+- **Qualitative Technicals (QLT):** Pattern recognition and subjective technical analysis (e.g., chart patterns, candlestick formations)
 
 ## Setup
 

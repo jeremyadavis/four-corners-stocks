@@ -3,17 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentPageIndicator = document.getElementById('current-page');
 
   // Set initial state
-  let currentPage = 'TL1';
-  let currentSet = 'TL'; // Now can be 'TL', 'TR', 'BL', or 'BR'
+  let currentPage = 'QTF1';
+  let currentSet = 'QTF'; // Now can be 'QTF', 'QLF', 'QTT', or 'QLT'
   let currentLevel = 1; // 1, 2, or 3
   updatePageVisibility();
 
   // Define navigation order for cycling between corners
-  const navigationOrder = ['TL', 'TR', 'BL', 'BR']; // Complete navigation cycle
+  const navigationOrder = ['QTF', 'QLF', 'QTT', 'QLT']; // Complete navigation cycle
 
   // Check if a set is in the top half or bottom half
   function isTopSet(set) {
-    return set === 'TL' || set === 'TR';
+    return set === 'QTF' || set === 'QLF';
   }
 
   // Listen for keydown events
@@ -88,8 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
     circle.addEventListener('click', () => {
       currentPage = circle.dataset.page;
       // Update the currentSet and currentLevel based on the clicked circle
-      currentSet = currentPage.substring(0, 2); // 'TL', 'TR', 'BL', or 'BR'
-      currentLevel = parseInt(currentPage.charAt(2)); // 1, 2, or 3
+      currentSet = currentPage.substring(0, 3); // 'QTF', 'QLF', 'QTT', or 'QLT'
+      currentLevel = parseInt(currentPage.charAt(3)); // 1, 2, or 3
       updatePageVisibility();
     });
   });
@@ -114,31 +114,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Always ensure proper z-index ordering (smaller circles always on top)
     // This ensures the inner circles remain visible when outer circles are selected
-    const tl1 = document.querySelector('.TL1');
-    const tl2 = document.querySelector('.TL2');
-    const tl3 = document.querySelector('.TL3');
-    const tr1 = document.querySelector('.TR1');
-    const tr2 = document.querySelector('.TR2');
-    const tr3 = document.querySelector('.TR3');
-    const bl1 = document.querySelector('.BL1');
-    const bl2 = document.querySelector('.BL2');
-    const bl3 = document.querySelector('.BL3');
-    const br1 = document.querySelector('.BR1');
-    const br2 = document.querySelector('.BR2');
-    const br3 = document.querySelector('.BR3');
+    const qtf1 = document.querySelector('.QTF1');
+    const qtf2 = document.querySelector('.QTF2');
+    const qtf3 = document.querySelector('.QTF3');
+    const qlf1 = document.querySelector('.QLF1');
+    const qlf2 = document.querySelector('.QLF2');
+    const qlf3 = document.querySelector('.QLF3');
+    const qtt1 = document.querySelector('.QTT1');
+    const qtt2 = document.querySelector('.QTT2');
+    const qtt3 = document.querySelector('.QTT3');
+    const qlt1 = document.querySelector('.QLT1');
+    const qlt2 = document.querySelector('.QLT2');
+    const qlt3 = document.querySelector('.QLT3');
 
     // Ensure consistent z-index ordering
-    tl1.style.zIndex = 3; // Innermost circle always on top
-    tl2.style.zIndex = 2; // Middle circle
-    tl3.style.zIndex = 1; // Outermost circle always at bottom
-    tr1.style.zIndex = 3; // Innermost circle always on top
-    tr2.style.zIndex = 2; // Middle circle
-    tr3.style.zIndex = 1; // Outermost circle always at bottom
-    bl1.style.zIndex = 3; // Innermost circle always on top
-    bl2.style.zIndex = 2; // Middle circle
-    bl3.style.zIndex = 1; // Outermost circle always at bottom
-    br1.style.zIndex = 3; // Innermost circle always on top
-    br2.style.zIndex = 2; // Middle circle
-    br3.style.zIndex = 1; // Outermost circle always at bottom
+    qtf1.style.zIndex = 3; // Innermost circle always on top
+    qtf2.style.zIndex = 2; // Middle circle
+    qtf3.style.zIndex = 1; // Outermost circle always at bottom
+    qlf1.style.zIndex = 3; // Innermost circle always on top
+    qlf2.style.zIndex = 2; // Middle circle
+    qlf3.style.zIndex = 1; // Outermost circle always at bottom
+    qtt1.style.zIndex = 3; // Innermost circle always on top
+    qtt2.style.zIndex = 2; // Middle circle
+    qtt3.style.zIndex = 1; // Outermost circle always at bottom
+    qlt1.style.zIndex = 3; // Innermost circle always on top
+    qlt2.style.zIndex = 2; // Middle circle
+    qlt3.style.zIndex = 1; // Outermost circle always at bottom
   }
 });

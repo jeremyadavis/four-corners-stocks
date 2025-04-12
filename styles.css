@@ -22,22 +22,22 @@ body {
   padding: 5px;
 }
 
-.tl-container {
+.qtf-container {
   top: 0;
   left: 0;
 }
 
-.tr-container {
+.qlf-container {
   top: 0;
   right: 0;
 }
 
-.bl-container {
+.qtt-container {
   bottom: 0;
   left: 0;
 }
 
-.br-container {
+.qlt-container {
   bottom: 0;
   right: 0;
 }
@@ -48,109 +48,109 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Top Left Quarter Circles */
-.TL1,
-.TL2,
-.TL3 {
+/* Quantitative Fundamentals (Top Left) Quarter Circles */
+.QTF1,
+.QTF2,
+.QTF3 {
   top: 0;
   left: 0;
   border-radius: 0 0 100% 0;
 }
 
-.TL1 {
+.QTF1 {
   width: 50px;
   height: 50px;
   background-color: #d3d3d3; /* Light gray */
 }
 
-.TL2 {
+.QTF2 {
   width: 75px;
   height: 75px;
   background-color: #888888; /* Darker gray */
 }
 
-.TL3 {
+.QTF3 {
   width: 100px;
   height: 100px;
   background-color: #e63946; /* Red */
 }
 
-/* Top Right Quarter Circles */
-.TR1,
-.TR2,
-.TR3 {
+/* Qualitative Fundamentals (Top Right) Quarter Circles */
+.QLF1,
+.QLF2,
+.QLF3 {
   top: 0;
   right: 0;
   border-radius: 0 0 0 100%;
 }
 
-.TR1 {
+.QLF1 {
   width: 50px;
   height: 50px;
   background-color: #a8dadc; /* Light blue */
 }
 
-.TR2 {
+.QLF2 {
   width: 75px;
   height: 75px;
   background-color: #457b9d; /* Medium blue */
 }
 
-.TR3 {
+.QLF3 {
   width: 100px;
   height: 100px;
   background-color: #1d3557; /* Dark blue */
 }
 
-/* Bottom Left Quarter Circles */
-.BL1,
-.BL2,
-.BL3 {
+/* Quantitative Technicals (Bottom Left) Quarter Circles */
+.QTT1,
+.QTT2,
+.QTT3 {
   bottom: 0;
   left: 0;
   border-radius: 0 100% 0 0;
 }
 
-.BL1 {
+.QTT1 {
   width: 50px;
   height: 50px;
   background-color: #a2d2ff; /* Light green-blue */
 }
 
-.BL2 {
+.QTT2 {
   width: 75px;
   height: 75px;
   background-color: #80b0e0; /* Medium green-blue */
 }
 
-.BL3 {
+.QTT3 {
   width: 100px;
   height: 100px;
   background-color: #2a9d8f; /* Teal */
 }
 
-/* Bottom Right Quarter Circles */
-.BR1,
-.BR2,
-.BR3 {
+/* Qualitative Technicals (Bottom Right) Quarter Circles */
+.QLT1,
+.QLT2,
+.QLT3 {
   bottom: 0;
   right: 0;
   border-radius: 100% 0 0 0;
 }
 
-.BR1 {
+.QLT1 {
   width: 50px;
   height: 50px;
   background-color: #ffb4a2; /* Light orange */
 }
 
-.BR2 {
+.QLT2 {
   width: 75px;
   height: 75px;
   background-color: #e5989b; /* Medium pink */
 }
 
-.BR3 {
+.QLT3 {
   width: 100px;
   height: 100px;
   background-color: #b5838d; /* Dark mauve */
@@ -178,4 +178,21 @@ body {
 
 .page-indicator p {
   color: #555;
+}
+
+.dimension-reference {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.dimension-reference h2 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.dimension-reference p {
+  margin: 5px 0;
 }
