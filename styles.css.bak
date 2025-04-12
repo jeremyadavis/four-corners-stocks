@@ -1,0 +1,319 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+.navigation-container {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  overflow: visible;
+  padding: 5px;
+}
+
+.qtf-container {
+  top: 0;
+  left: 0;
+}
+
+.qlf-container {
+  top: 0;
+  right: 0;
+}
+
+.qtt-container {
+  bottom: 0;
+  left: 0;
+}
+
+.qlt-container {
+  bottom: 0;
+  right: 0;
+}
+
+.quarter-circle {
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Common styles for all first level circles (smallest) */
+.QTF1,
+.QLF1,
+.QTT1,
+.QLT1 {
+  width: 40px;
+  height: 40px;
+  background-color: #e0e0e0;
+}
+
+/* Common styles for all second level circles (medium) */
+.QTF2,
+.QLF2,
+.QTT2,
+.QLT2 {
+  width: 60px;
+  height: 60px;
+  background-color: #a0a0a0;
+}
+
+/* Common styles for all third level circles (largest) */
+.QTF3,
+.QLF3,
+.QTT3,
+.QLT3 {
+  width: 80px;
+  height: 80px;
+  background-color: #505050;
+}
+
+/* Quantitative Fundamentals (Top Left) Quarter Circles */
+.QTF1,
+.QTF2,
+.QTF3 {
+  top: 0;
+  left: 0;
+  border-radius: 0 0 100% 0;
+}
+
+/* Qualitative Fundamentals (Top Right) Quarter Circles */
+.QLF1,
+.QLF2,
+.QLF3 {
+  top: 0;
+  right: 0;
+  border-radius: 0 0 0 100%;
+}
+
+/* Quantitative Technicals (Bottom Left) Quarter Circles */
+.QTT1,
+.QTT2,
+.QTT3 {
+  bottom: 0;
+  left: 0;
+  border-radius: 0 100% 0 0;
+}
+
+/* Qualitative Technicals (Bottom Right) Quarter Circles */
+.QLT1,
+.QLT2,
+.QLT3 {
+  bottom: 0;
+  right: 0;
+  border-radius: 100% 0 0 0;
+}
+
+/* Base active state styles */
+.active {
+  border: 3px solid rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+  opacity: 1 !important;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Quantitative Fundamentals (Blue) active states */
+.QTF1.active {
+  background-color: rgba(
+    33,
+    150,
+    243,
+    0.95
+  ) !important; /* Almost solid for inner */
+  border-color: #2196f3;
+  box-shadow: 0 0 12px rgba(33, 150, 243, 0.7);
+}
+
+.QTF2.active {
+  background-color: rgba(
+    33,
+    150,
+    243,
+    0.65
+  ) !important; /* Semi-transparent for middle */
+  border-color: #2196f3;
+  box-shadow: 0 0 12px rgba(33, 150, 243, 0.7);
+}
+
+.QTF3.active {
+  background-color: rgba(
+    33,
+    150,
+    243,
+    0.45
+  ) !important; /* More transparent for outer */
+  border-color: #2196f3;
+  box-shadow: 0 0 12px rgba(33, 150, 243, 0.7);
+}
+
+/* Qualitative Fundamentals (Purple) active states */
+.QLF1.active {
+  background-color: rgba(
+    156,
+    39,
+    176,
+    0.95
+  ) !important; /* Almost solid for inner */
+  border-color: #9c27b0;
+  box-shadow: 0 0 12px rgba(156, 39, 176, 0.7);
+}
+
+.QLF2.active {
+  background-color: rgba(
+    156,
+    39,
+    176,
+    0.65
+  ) !important; /* Semi-transparent for middle */
+  border-color: #9c27b0;
+  box-shadow: 0 0 12px rgba(156, 39, 176, 0.7);
+}
+
+.QLF3.active {
+  background-color: rgba(
+    156,
+    39,
+    176,
+    0.45
+  ) !important; /* More transparent for outer */
+  border-color: #9c27b0;
+  box-shadow: 0 0 12px rgba(156, 39, 176, 0.7);
+}
+
+/* Quantitative Technicals (Orange) active states */
+.QTT1.active {
+  background-color: rgba(
+    255,
+    152,
+    0,
+    0.95
+  ) !important; /* Almost solid for inner */
+  border-color: #ff9800;
+  box-shadow: 0 0 12px rgba(255, 152, 0, 0.7);
+}
+
+.QTT2.active {
+  background-color: rgba(
+    255,
+    152,
+    0,
+    0.65
+  ) !important; /* Semi-transparent for middle */
+  border-color: #ff9800;
+  box-shadow: 0 0 12px rgba(255, 152, 0, 0.7);
+}
+
+.QTT3.active {
+  background-color: rgba(
+    255,
+    152,
+    0,
+    0.45
+  ) !important; /* More transparent for outer */
+  border-color: #ff9800;
+  box-shadow: 0 0 12px rgba(255, 152, 0, 0.7);
+}
+
+/* Qualitative Technicals (Red) active states */
+.QLT1.active {
+  background-color: rgba(
+    244,
+    67,
+    54,
+    0.95
+  ) !important; /* Almost solid for inner */
+  border-color: #f44336;
+  box-shadow: 0 0 12px rgba(244, 67, 54, 0.7);
+}
+
+.QLT2.active {
+  background-color: rgba(
+    244,
+    67,
+    54,
+    0.65
+  ) !important; /* Semi-transparent for middle */
+  border-color: #f44336;
+  box-shadow: 0 0 12px rgba(244, 67, 54, 0.7);
+}
+
+.QLT3.active {
+  background-color: rgba(
+    244,
+    67,
+    54,
+    0.45
+  ) !important; /* More transparent for outer */
+  border-color: #f44336;
+  box-shadow: 0 0 12px rgba(244, 67, 54, 0.7);
+}
+
+.inactive {
+  opacity: 0.7;
+}
+
+.inactive:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+  transition: all 0.2s ease;
+}
+
+/* Make all elements visible regardless of which is active */
+.page-indicator {
+  margin-top: 120px;
+  text-align: center;
+}
+
+.page-indicator h1 {
+  margin-bottom: 10px;
+}
+
+.page-indicator p {
+  color: #555;
+}
+
+.dimension-reference {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.dimension-reference h2 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.dimension-reference p {
+  margin: 5px 0;
+}
+
+/* Add colors to dimension references to match active state colors */
+.dimension-reference p:nth-child(2) strong {
+  color: #2196f3;
+}
+
+.dimension-reference p:nth-child(3) strong {
+  color: #9c27b0;
+}
+
+.dimension-reference p:nth-child(4) strong {
+  color: #ff9800;
+}
+
+.dimension-reference p:nth-child(5) strong {
+  color: #f44336;
+}

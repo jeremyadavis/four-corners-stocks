@@ -102,35 +102,46 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set base z-index for all corners
     const corners = ['QTF', 'QLF', 'QTT', 'QLT'];
 
+    // First, remove 'corner-active' class from all outer circles
+    corners.forEach((corner) => {
+      const outerCircle = document.querySelector(`.${corner}3`);
+      if (outerCircle) {
+        outerCircle.classList.remove('corner-active');
+      }
+    });
+
     // Apply z-index and active/inactive classes
     corners.forEach((corner) => {
-      // First, handle z-index for proper stacking order
+      // First set all circles in this corner to inactive
       for (let i = 1; i <= 3; i++) {
         const selector = `.${corner}${i}`;
         const element = document.querySelector(selector);
 
         if (!element) continue;
 
-        // Keep smallest circle on top, regardless of active state
-        // Higher z-index = closer to the viewer
-        element.style.zIndex = 4 - i; // Level 1: z-index=3, Level 2: z-index=2, Level 3: z-index=1
+        // Always set the smallest circle to have the highest z-index
+        // Regardless of which is active
+        element.style.zIndex = 10 - i; // Level 1: z-index=9, Level 2: z-index=8, Level 3: z-index=7
+
+        // First, set everything to inactive
+        element.classList.add('inactive');
+        element.classList.remove('active');
       }
 
-      // Then apply active/inactive classes
-      for (let i = 1; i <= 3; i++) {
-        const selector = `.${corner}${i}`;
-        const element = document.querySelector(selector);
+      // Then set the active circle
+      const activeSelector = `.${currentPage}`;
+      const activeElement = document.querySelector(activeSelector);
 
-        if (!element) continue;
+      if (activeElement) {
+        activeElement.classList.add('active');
+        activeElement.classList.remove('inactive');
 
-        const pageName = element.dataset.page;
-
-        if (pageName === currentPage) {
-          element.classList.add('active');
-          element.classList.remove('inactive');
-        } else {
-          element.classList.add('inactive');
-          element.classList.remove('active');
+        // Add a special class to the outer circle of the current corner
+        // to highlight the entire corner
+        const currentCorner = currentPage.substring(0, 3);
+        const outerCircle = document.querySelector(`.${currentCorner}3`);
+        if (outerCircle) {
+          outerCircle.classList.add('corner-active');
         }
       }
     });
