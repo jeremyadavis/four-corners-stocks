@@ -104,23 +104,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Apply z-index and active/inactive classes
     corners.forEach((corner) => {
+      // First, handle z-index for proper stacking order
       for (let i = 1; i <= 3; i++) {
         const selector = `.${corner}${i}`;
         const element = document.querySelector(selector);
 
         if (!element) continue;
 
-        // Set z-index: smaller circles (level 1) on top
+        // Keep smallest circle on top, regardless of active state
+        // Higher z-index = closer to the viewer
         element.style.zIndex = 4 - i; // Level 1: z-index=3, Level 2: z-index=2, Level 3: z-index=1
+      }
+
+      // Then apply active/inactive classes
+      for (let i = 1; i <= 3; i++) {
+        const selector = `.${corner}${i}`;
+        const element = document.querySelector(selector);
+
+        if (!element) continue;
 
         const pageName = element.dataset.page;
 
         if (pageName === currentPage) {
           element.classList.add('active');
           element.classList.remove('inactive');
-
-          // Make sure active elements have elevated z-index
-          // This will override the inline z-index with CSS !important in the active class
         } else {
           element.classList.add('inactive');
           element.classList.remove('active');
