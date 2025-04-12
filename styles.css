@@ -16,8 +16,8 @@ body {
 
 .navigation-container {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   overflow: visible;
   padding: 5px;
 }
@@ -44,8 +44,39 @@ body {
 
 .quarter-circle {
   position: absolute;
-  border: 1px solid transparent;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Common styles for all first level circles (smallest) */
+.QTF1,
+.QLF1,
+.QTT1,
+.QLT1 {
+  width: 40px;
+  height: 40px;
+  background-color: #e0e0e0;
+}
+
+/* Common styles for all second level circles (medium) */
+.QTF2,
+.QLF2,
+.QTT2,
+.QLT2 {
+  width: 60px;
+  height: 60px;
+  background-color: #a0a0a0;
+}
+
+/* Common styles for all third level circles (largest) */
+.QTF3,
+.QLF3,
+.QTT3,
+.QLT3 {
+  width: 80px;
+  height: 80px;
+  background-color: #505050;
 }
 
 /* Quantitative Fundamentals (Top Left) Quarter Circles */
@@ -57,24 +88,6 @@ body {
   border-radius: 0 0 100% 0;
 }
 
-.QTF1 {
-  width: 50px;
-  height: 50px;
-  background-color: #d3d3d3; /* Light gray */
-}
-
-.QTF2 {
-  width: 75px;
-  height: 75px;
-  background-color: #888888; /* Darker gray */
-}
-
-.QTF3 {
-  width: 100px;
-  height: 100px;
-  background-color: #e63946; /* Red */
-}
-
 /* Qualitative Fundamentals (Top Right) Quarter Circles */
 .QLF1,
 .QLF2,
@@ -82,24 +95,6 @@ body {
   top: 0;
   right: 0;
   border-radius: 0 0 0 100%;
-}
-
-.QLF1 {
-  width: 50px;
-  height: 50px;
-  background-color: #a8dadc; /* Light blue */
-}
-
-.QLF2 {
-  width: 75px;
-  height: 75px;
-  background-color: #457b9d; /* Medium blue */
-}
-
-.QLF3 {
-  width: 100px;
-  height: 100px;
-  background-color: #1d3557; /* Dark blue */
 }
 
 /* Quantitative Technicals (Bottom Left) Quarter Circles */
@@ -111,24 +106,6 @@ body {
   border-radius: 0 100% 0 0;
 }
 
-.QTT1 {
-  width: 50px;
-  height: 50px;
-  background-color: #a2d2ff; /* Light green-blue */
-}
-
-.QTT2 {
-  width: 75px;
-  height: 75px;
-  background-color: #80b0e0; /* Medium green-blue */
-}
-
-.QTT3 {
-  width: 100px;
-  height: 100px;
-  background-color: #2a9d8f; /* Teal */
-}
-
 /* Qualitative Technicals (Bottom Right) Quarter Circles */
 .QLT1,
 .QLT2,
@@ -138,32 +115,58 @@ body {
   border-radius: 100% 0 0 0;
 }
 
-.QLT1 {
-  width: 50px;
-  height: 50px;
-  background-color: #ffb4a2; /* Light orange */
-}
-
-.QLT2 {
-  width: 75px;
-  height: 75px;
-  background-color: #e5989b; /* Medium pink */
-}
-
-.QLT3 {
-  width: 100px;
-  height: 100px;
-  background-color: #b5838d; /* Dark mauve */
-}
-
+/* Active state - green highlight */
 .active {
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  transform: scale(1.01);
+  border: 3px solid #4caf50;
+  box-shadow: 0 0 12px rgba(76, 175, 80, 0.7);
+  transform: scale(1.05);
+  z-index: 10 !important;
+  background-color: #4caf50 !important;
+  opacity: 1 !important;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Different color options for each corner - applied only when active */
+.QTF1.active,
+.QTF2.active,
+.QTF3.active {
+  background-color: #2196f3 !important;
+  border-color: #2196f3;
+  box-shadow: 0 0 12px rgba(33, 150, 243, 0.7);
+}
+
+.QLF1.active,
+.QLF2.active,
+.QLF3.active {
+  background-color: #9c27b0 !important;
+  border-color: #9c27b0;
+  box-shadow: 0 0 12px rgba(156, 39, 176, 0.7);
+}
+
+.QTT1.active,
+.QTT2.active,
+.QTT3.active {
+  background-color: #ff9800 !important;
+  border-color: #ff9800;
+  box-shadow: 0 0 12px rgba(255, 152, 0, 0.7);
+}
+
+.QLT1.active,
+.QLT2.active,
+.QLT3.active {
+  background-color: #f44336 !important;
+  border-color: #f44336;
+  box-shadow: 0 0 12px rgba(244, 67, 54, 0.7);
 }
 
 .inactive {
-  opacity: 0.8;
+  opacity: 0.7;
+}
+
+.inactive:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+  transition: all 0.2s ease;
 }
 
 /* Make all elements visible regardless of which is active */
@@ -195,4 +198,21 @@ body {
 
 .dimension-reference p {
   margin: 5px 0;
+}
+
+/* Add colors to dimension references to match active state colors */
+.dimension-reference p:nth-child(2) strong {
+  color: #2196f3;
+}
+
+.dimension-reference p:nth-child(3) strong {
+  color: #9c27b0;
+}
+
+.dimension-reference p:nth-child(4) strong {
+  color: #ff9800;
+}
+
+.dimension-reference p:nth-child(5) strong {
+  color: #f44336;
 }

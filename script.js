@@ -99,46 +99,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update the page indicator text
     currentPageIndicator.textContent = currentPage;
 
-    // Update the active/inactive classes
-    quarterCircles.forEach((circle) => {
-      const pageName = circle.dataset.page;
+    // Set base z-index for all corners
+    const corners = ['QTF', 'QLF', 'QTT', 'QLT'];
 
-      if (pageName === currentPage) {
-        circle.classList.add('active');
-        circle.classList.remove('inactive');
-      } else {
-        circle.classList.add('inactive');
-        circle.classList.remove('active');
+    // Apply z-index and active/inactive classes
+    corners.forEach((corner) => {
+      for (let i = 1; i <= 3; i++) {
+        const selector = `.${corner}${i}`;
+        const element = document.querySelector(selector);
+
+        if (!element) continue;
+
+        // Set z-index: smaller circles (level 1) on top
+        element.style.zIndex = 4 - i; // Level 1: z-index=3, Level 2: z-index=2, Level 3: z-index=1
+
+        const pageName = element.dataset.page;
+
+        if (pageName === currentPage) {
+          element.classList.add('active');
+          element.classList.remove('inactive');
+
+          // Make sure active elements have elevated z-index
+          // This will override the inline z-index with CSS !important in the active class
+        } else {
+          element.classList.add('inactive');
+          element.classList.remove('active');
+        }
       }
     });
-
-    // Always ensure proper z-index ordering (smaller circles always on top)
-    // This ensures the inner circles remain visible when outer circles are selected
-    const qtf1 = document.querySelector('.QTF1');
-    const qtf2 = document.querySelector('.QTF2');
-    const qtf3 = document.querySelector('.QTF3');
-    const qlf1 = document.querySelector('.QLF1');
-    const qlf2 = document.querySelector('.QLF2');
-    const qlf3 = document.querySelector('.QLF3');
-    const qtt1 = document.querySelector('.QTT1');
-    const qtt2 = document.querySelector('.QTT2');
-    const qtt3 = document.querySelector('.QTT3');
-    const qlt1 = document.querySelector('.QLT1');
-    const qlt2 = document.querySelector('.QLT2');
-    const qlt3 = document.querySelector('.QLT3');
-
-    // Ensure consistent z-index ordering
-    qtf1.style.zIndex = 3; // Innermost circle always on top
-    qtf2.style.zIndex = 2; // Middle circle
-    qtf3.style.zIndex = 1; // Outermost circle always at bottom
-    qlf1.style.zIndex = 3; // Innermost circle always on top
-    qlf2.style.zIndex = 2; // Middle circle
-    qlf3.style.zIndex = 1; // Outermost circle always at bottom
-    qtt1.style.zIndex = 3; // Innermost circle always on top
-    qtt2.style.zIndex = 2; // Middle circle
-    qtt3.style.zIndex = 1; // Outermost circle always at bottom
-    qlt1.style.zIndex = 3; // Innermost circle always on top
-    qlt2.style.zIndex = 2; // Middle circle
-    qlt3.style.zIndex = 1; // Outermost circle always at bottom
   }
 });
