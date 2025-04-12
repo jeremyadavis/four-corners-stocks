@@ -12,6 +12,24 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #f5f5f5;
+  transition: background-color 0.8s ease;
+}
+
+/* Background color theming based on active corner */
+body.bg-qtf {
+  background-color: #e6f3ff; /* Very light blue */
+}
+
+body.bg-qlf {
+  background-color: #f5e6ff; /* Very light purple */
+}
+
+body.bg-qtt {
+  background-color: #fff5e6; /* Very light orange */
+}
+
+body.bg-qlt {
+  background-color: #ffe6e6; /* Very light red */
 }
 
 .navigation-container {
@@ -321,6 +339,32 @@ body {
 .page-indicator {
   margin-top: 120px;
   text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+/* Page indicator styling for different dimensions */
+body.bg-qtf .page-indicator {
+  background-color: rgba(33, 150, 243, 0.08);
+  border: 1px solid rgba(33, 150, 243, 0.2);
+}
+
+body.bg-qlf .page-indicator {
+  background-color: rgba(156, 39, 176, 0.08);
+  border: 1px solid rgba(156, 39, 176, 0.2);
+}
+
+body.bg-qtt .page-indicator {
+  background-color: rgba(255, 152, 0, 0.08);
+  border: 1px solid rgba(255, 152, 0, 0.2);
+}
+
+body.bg-qlt .page-indicator {
+  background-color: rgba(244, 67, 54, 0.08);
+  border: 1px solid rgba(244, 67, 54, 0.2);
 }
 
 .page-indicator h1 {
@@ -333,10 +377,62 @@ body {
 
 .dimension-reference {
   margin-top: 20px;
-  padding: 10px;
+  padding: 15px;
   background-color: #f0f0f0;
   border-radius: 8px;
   text-align: left;
+  transition: all 0.5s ease;
+  border-left: 4px solid #ccc;
+}
+
+/* Dimension reference styling for different corners */
+body.bg-qtf .dimension-reference {
+  border-left: 4px solid rgba(33, 150, 243, 0.7);
+  background-color: rgba(33, 150, 243, 0.04);
+}
+
+body.bg-qlf .dimension-reference {
+  border-left: 4px solid rgba(156, 39, 176, 0.7);
+  background-color: rgba(156, 39, 176, 0.04);
+}
+
+body.bg-qtt .dimension-reference {
+  border-left: 4px solid rgba(255, 152, 0, 0.7);
+  background-color: rgba(255, 152, 0, 0.04);
+}
+
+body.bg-qlt .dimension-reference {
+  border-left: 4px solid rgba(244, 67, 54, 0.7);
+  background-color: rgba(244, 67, 54, 0.04);
+}
+
+/* Highlight the active dimension in the reference guide */
+body.bg-qtf .dimension-reference p:nth-child(2) {
+  font-weight: 500;
+  background-color: rgba(33, 150, 243, 0.1);
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+
+body.bg-qlf .dimension-reference p:nth-child(3) {
+  font-weight: 500;
+  background-color: rgba(156, 39, 176, 0.1);
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+
+body.bg-qtt .dimension-reference p:nth-child(4) {
+  font-weight: 500;
+  background-color: rgba(255, 152, 0, 0.1);
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+
+body.bg-qlt .dimension-reference p:nth-child(5) {
+  font-weight: 500;
+  background-color: rgba(244, 67, 54, 0.1);
+  padding: 3px 5px;
+  border-radius: 4px;
 }
 
 .dimension-reference h2 {

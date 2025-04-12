@@ -110,6 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Remove all corner background classes from body
+    document.body.classList.remove('bg-qtf', 'bg-qlf', 'bg-qtt', 'bg-qlt');
+
+    // Add the current corner's background class to body
+    document.body.classList.add(`bg-${currentSet.toLowerCase()}`);
+
     // Apply z-index and active/inactive classes
     corners.forEach((corner) => {
       // First set all circles in this corner to inactive
