@@ -117,69 +117,194 @@ body {
 
 /* Base active state styles */
 .active {
-  border: 3px solid #4caf50;
-  box-shadow: 0 0 12px rgba(76, 175, 80, 0.7);
+  border: 3px solid rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
   transform: scale(1.05);
   opacity: 1 !important;
   transition: all 0.2s ease-in-out;
 }
 
-/* Make level 2 and 3 circles semi-transparent when active */
-.QTF2.active,
-.QTF3.active,
-.QLF2.active,
-.QLF3.active,
-.QTT2.active,
-.QTT3.active,
-.QLT2.active,
-.QLT3.active {
-  background-color: rgba(0, 0, 0, 0.15) !important;
-  border-width: 3px;
+/* Outer circle highlighting when corner is active */
+.corner-active {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  opacity: 0.85 !important;
+  animation: pulse 2s infinite;
 }
 
-/* Different color options for each corner - applied only when active */
-.QTF1.active,
-.QTF2.active,
-.QTF3.active {
+/* Specific outer circle highlighting for each corner */
+.QTF3.corner-active {
+  border-color: rgba(33, 150, 243, 0.9);
+  box-shadow: 0 0 15px rgba(33, 150, 243, 0.5);
+}
+
+.QLF3.corner-active {
+  border-color: rgba(156, 39, 176, 0.9);
+  box-shadow: 0 0 15px rgba(156, 39, 176, 0.5);
+}
+
+.QTT3.corner-active {
+  border-color: rgba(255, 152, 0, 0.9);
+  box-shadow: 0 0 15px rgba(255, 152, 0, 0.5);
+}
+
+.QLT3.corner-active {
+  border-color: rgba(244, 67, 54, 0.9);
+  box-shadow: 0 0 15px rgba(244, 67, 54, 0.5);
+}
+
+/* Pulse animation for active corners */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Colored pulse animations for each corner */
+.QTF3.corner-active {
+  animation: pulse-blue 2s infinite;
+}
+
+.QLF3.corner-active {
+  animation: pulse-purple 2s infinite;
+}
+
+.QTT3.corner-active {
+  animation: pulse-orange 2s infinite;
+}
+
+.QLT3.corner-active {
+  animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-blue {
+  0% {
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(33, 150, 243, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+  }
+}
+
+@keyframes pulse-purple {
+  0% {
+    box-shadow: 0 0 10px rgba(156, 39, 176, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(156, 39, 176, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(156, 39, 176, 0.3);
+  }
+}
+
+@keyframes pulse-orange {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 152, 0, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.3);
+  }
+}
+
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 10px rgba(244, 67, 54, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(244, 67, 54, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(244, 67, 54, 0.3);
+  }
+}
+
+/* Quantitative Fundamentals (Blue) active states */
+.QTF1.active {
+  background-color: rgba(33, 150, 243, 0.95) !important;
   border-color: #2196f3;
   box-shadow: 0 0 12px rgba(33, 150, 243, 0.7);
 }
 
-.QTF1.active {
-  background-color: #2196f3 !important;
+.QTF2.active {
+  background-color: rgba(33, 150, 243, 0.65) !important;
+  border-color: #2196f3;
+  box-shadow: 0 0 12px rgba(33, 150, 243, 0.7);
 }
 
-.QLF1.active,
-.QLF2.active,
-.QLF3.active {
+.QTF3.active {
+  background-color: rgba(33, 150, 243, 0.45) !important;
+  border-color: #2196f3;
+  box-shadow: 0 0 12px rgba(33, 150, 243, 0.7);
+}
+
+/* Qualitative Fundamentals (Purple) active states */
+.QLF1.active {
+  background-color: rgba(156, 39, 176, 0.95) !important;
   border-color: #9c27b0;
   box-shadow: 0 0 12px rgba(156, 39, 176, 0.7);
 }
 
-.QLF1.active {
-  background-color: #9c27b0 !important;
+.QLF2.active {
+  background-color: rgba(156, 39, 176, 0.65) !important;
+  border-color: #9c27b0;
+  box-shadow: 0 0 12px rgba(156, 39, 176, 0.7);
 }
 
-.QTT1.active,
-.QTT2.active,
-.QTT3.active {
+.QLF3.active {
+  background-color: rgba(156, 39, 176, 0.45) !important;
+  border-color: #9c27b0;
+  box-shadow: 0 0 12px rgba(156, 39, 176, 0.7);
+}
+
+/* Quantitative Technicals (Orange) active states */
+.QTT1.active {
+  background-color: rgba(255, 152, 0, 0.95) !important;
   border-color: #ff9800;
   box-shadow: 0 0 12px rgba(255, 152, 0, 0.7);
 }
 
-.QTT1.active {
-  background-color: #ff9800 !important;
+.QTT2.active {
+  background-color: rgba(255, 152, 0, 0.65) !important;
+  border-color: #ff9800;
+  box-shadow: 0 0 12px rgba(255, 152, 0, 0.7);
 }
 
-.QLT1.active,
-.QLT2.active,
-.QLT3.active {
+.QTT3.active {
+  background-color: rgba(255, 152, 0, 0.45) !important;
+  border-color: #ff9800;
+  box-shadow: 0 0 12px rgba(255, 152, 0, 0.7);
+}
+
+/* Qualitative Technicals (Red) active states */
+.QLT1.active {
+  background-color: rgba(244, 67, 54, 0.95) !important;
   border-color: #f44336;
   box-shadow: 0 0 12px rgba(244, 67, 54, 0.7);
 }
 
-.QLT1.active {
-  background-color: #f44336 !important;
+.QLT2.active {
+  background-color: rgba(244, 67, 54, 0.65) !important;
+  border-color: #f44336;
+  box-shadow: 0 0 12px rgba(244, 67, 54, 0.7);
+}
+
+.QLT3.active {
+  background-color: rgba(244, 67, 54, 0.45) !important;
+  border-color: #f44336;
+  box-shadow: 0 0 12px rgba(244, 67, 54, 0.7);
 }
 
 .inactive {
