@@ -5,66 +5,216 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  position: relative;
+  overflow-x: hidden;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f5f5f5;
-  transition: background-color 0.8s ease;
 }
 
 /* Background color theming based on active corner */
 body.bg-qtf {
-  background-color: rgba(33, 150, 243, 0.03); /* Extremely light blue */
+  background-color: #f5f8fa;
+  background-image: radial-gradient(
+      circle at 15% 15%,
+      rgba(33, 150, 243, 0.03) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 85% 85%,
+      rgba(33, 150, 243, 0.02) 0%,
+      transparent 40%
+    );
 }
 
 body.bg-qlf {
-  background-color: rgba(156, 39, 176, 0.03); /* Extremely light purple */
+  background-color: #f8f5fa;
+  background-image: radial-gradient(
+      circle at 85% 15%,
+      rgba(156, 39, 176, 0.03) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(156, 39, 176, 0.02) 0%,
+      transparent 40%
+    );
 }
 
 body.bg-qtt {
-  background-color: rgba(255, 152, 0, 0.03); /* Extremely light orange */
+  background-color: #faf8f5;
+  background-image: radial-gradient(
+      circle at 15% 85%,
+      rgba(255, 152, 0, 0.03) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(255, 152, 0, 0.02) 0%,
+      transparent 40%
+    );
 }
 
 body.bg-qlt {
-  background-color: rgba(244, 67, 54, 0.03); /* Extremely light red */
+  background-color: #faf5f5;
+  background-image: radial-gradient(
+      circle at 85% 85%,
+      rgba(244, 67, 54, 0.03) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(244, 67, 54, 0.02) 0%,
+      transparent 40%
+    );
 }
 
+/* Navigation Containers */
 .navigation-container {
-  position: absolute;
+  position: fixed;
   width: 64px;
   height: 64px;
   overflow: visible;
   padding: 4px;
+  z-index: 90; /* Higher than content area */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
+/* Top-left corner - Quantitative Fundamentals (QTF) */
 .qtf-container {
+  position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
 }
 
+/* Bottom-left corner - Qualitative Fundamentals (QLF) */
 .qlf-container {
-  top: 0;
-  right: 0;
-}
-
-.qtt-container {
+  position: fixed;
   bottom: 0;
   left: 0;
+  z-index: 10;
 }
 
+/* Top-right corner - Quantitative Technicals (QTT) */
+.qtt-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
+/* Bottom-right corner - Qualitative Technicals (QLT) */
 .qlt-container {
+  position: fixed;
   bottom: 0;
   right: 0;
+  z-index: 10;
 }
 
-.quarter-circle {
+/* Quarter circle top left (QTF) */
+.QTF1,
+.QTF2,
+.QTF3 {
+  border-radius: 0 0 100% 0;
   position: absolute;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  top: 0;
+  left: 0;
   cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Quarter circle bottom left (QLF) */
+.QLF1,
+.QLF2,
+.QLF3 {
+  border-radius: 0 100% 0 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Quarter circle top right (QTT) */
+.QTT1,
+.QTT2,
+.QTT3 {
+  border-radius: 0 0 0 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Quarter circle bottom right (QLT) */
+.QLT1,
+.QLT2,
+.QLT3 {
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effects for all circles */
+.QTF1:hover,
+.QTF2:hover,
+.QTF3:hover,
+.QLF1:hover,
+.QLF2:hover,
+.QLF3:hover,
+.QTT1:hover,
+.QTT2:hover,
+.QTT3:hover,
+.QLT1:hover,
+.QLT2:hover,
+.QLT3:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+/* Specific hover colors for each corner */
+.QTF1:hover,
+.QTF2:hover,
+.QTF3:hover {
+  background-color: rgba(33, 150, 243, 0.3);
+}
+
+.QLF1:hover,
+.QLF2:hover,
+.QLF3:hover {
+  background-color: rgba(156, 39, 176, 0.3);
+}
+
+.QTT1:hover,
+.QTT2:hover,
+.QTT3:hover {
+  background-color: rgba(255, 152, 0, 0.3);
+}
+
+.QLT1:hover,
+.QLT2:hover,
+.QLT3:hover {
+  background-color: rgba(244, 67, 54, 0.3);
 }
 
 /* Common styles for all first level circles (smallest) */
@@ -74,7 +224,8 @@ body.bg-qlt {
 .QLT1 {
   width: 32px;
   height: 32px;
-  background-color: #e0e0e0;
+  background-color: #f0f0f0;
+  z-index: 9; /* Highest z-index among circles in its corner */
 }
 
 /* Common styles for all second level circles (medium) */
@@ -84,7 +235,8 @@ body.bg-qlt {
 .QLT2 {
   width: 48px;
   height: 48px;
-  background-color: #a0a0a0;
+  background-color: #e0e0e0;
+  z-index: 8; /* Middle z-index among circles in its corner */
 }
 
 /* Common styles for all third level circles (largest) */
@@ -94,49 +246,14 @@ body.bg-qlt {
 .QLT3 {
   width: 64px;
   height: 64px;
-  background-color: #505050;
-}
-
-/* Quantitative Fundamentals (Top Left) Quarter Circles */
-.QTF1,
-.QTF2,
-.QTF3 {
-  top: 0;
-  left: 0;
-  border-radius: 0 0 100% 0;
-}
-
-/* Qualitative Fundamentals (Top Right) Quarter Circles */
-.QLF1,
-.QLF2,
-.QLF3 {
-  top: 0;
-  right: 0;
-  border-radius: 0 0 0 100%;
-}
-
-/* Quantitative Technicals (Bottom Left) Quarter Circles */
-.QTT1,
-.QTT2,
-.QTT3 {
-  bottom: 0;
-  left: 0;
-  border-radius: 0 100% 0 0;
-}
-
-/* Qualitative Technicals (Bottom Right) Quarter Circles */
-.QLT1,
-.QLT2,
-.QLT3 {
-  bottom: 0;
-  right: 0;
-  border-radius: 100% 0 0 0;
+  background-color: #d0d0d0;
+  z-index: 7; /* Lowest z-index among circles in its corner */
 }
 
 /* Base active state styles */
 .active {
-  border: 2px solid rgba(0, 0, 0, 0.7);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   transform: scale(1.05);
   opacity: 1 !important;
   transition: all 0.2s ease-in-out;
@@ -144,43 +261,43 @@ body.bg-qlt {
 
 /* Outer circle highlighting when corner is active */
 .corner-active {
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
-  opacity: 0.85 !important;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+  opacity: 0.9 !important;
   animation: pulse 2s infinite;
 }
 
 /* Specific outer circle highlighting for each corner */
 .QTF3.corner-active {
-  border-color: rgba(33, 150, 243, 0.9);
-  box-shadow: 0 0 12px rgba(33, 150, 243, 0.5);
+  border-color: rgba(33, 150, 243, 0.6);
+  box-shadow: 0 0 12px rgba(33, 150, 243, 0.3);
 }
 
 .QLF3.corner-active {
-  border-color: rgba(156, 39, 176, 0.9);
-  box-shadow: 0 0 12px rgba(156, 39, 176, 0.5);
+  border-color: rgba(156, 39, 176, 0.6);
+  box-shadow: 0 0 12px rgba(156, 39, 176, 0.3);
 }
 
 .QTT3.corner-active {
-  border-color: rgba(255, 152, 0, 0.9);
-  box-shadow: 0 0 12px rgba(255, 152, 0, 0.5);
+  border-color: rgba(255, 152, 0, 0.6);
+  box-shadow: 0 0 12px rgba(255, 152, 0, 0.3);
 }
 
 .QLT3.corner-active {
-  border-color: rgba(244, 67, 54, 0.9);
-  box-shadow: 0 0 12px rgba(244, 67, 54, 0.5);
+  border-color: rgba(244, 67, 54, 0.6);
+  box-shadow: 0 0 12px rgba(244, 67, 54, 0.3);
 }
 
 /* Pulse animation for active corners */
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   }
   50% {
-    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
   }
   100% {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -203,126 +320,138 @@ body.bg-qlt {
 
 @keyframes pulse-blue {
   0% {
-    box-shadow: 0 0 8px rgba(33, 150, 243, 0.3);
+    box-shadow: 0 0 8px rgba(33, 150, 243, 0.2);
   }
   50% {
-    box-shadow: 0 0 16px rgba(33, 150, 243, 0.7);
+    box-shadow: 0 0 16px rgba(33, 150, 243, 0.4);
   }
   100% {
-    box-shadow: 0 0 8px rgba(33, 150, 243, 0.3);
+    box-shadow: 0 0 8px rgba(33, 150, 243, 0.2);
   }
 }
 
 @keyframes pulse-purple {
   0% {
-    box-shadow: 0 0 8px rgba(156, 39, 176, 0.3);
+    box-shadow: 0 0 8px rgba(156, 39, 176, 0.2);
   }
   50% {
-    box-shadow: 0 0 16px rgba(156, 39, 176, 0.7);
+    box-shadow: 0 0 16px rgba(156, 39, 176, 0.4);
   }
   100% {
-    box-shadow: 0 0 8px rgba(156, 39, 176, 0.3);
+    box-shadow: 0 0 8px rgba(156, 39, 176, 0.2);
   }
 }
 
 @keyframes pulse-orange {
   0% {
-    box-shadow: 0 0 8px rgba(255, 152, 0, 0.3);
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.2);
   }
   50% {
-    box-shadow: 0 0 16px rgba(255, 152, 0, 0.7);
+    box-shadow: 0 0 16px rgba(255, 152, 0, 0.4);
   }
   100% {
-    box-shadow: 0 0 8px rgba(255, 152, 0, 0.3);
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.2);
   }
 }
 
 @keyframes pulse-red {
   0% {
-    box-shadow: 0 0 8px rgba(244, 67, 54, 0.3);
+    box-shadow: 0 0 8px rgba(244, 67, 54, 0.2);
   }
   50% {
-    box-shadow: 0 0 16px rgba(244, 67, 54, 0.7);
+    box-shadow: 0 0 16px rgba(244, 67, 54, 0.4);
   }
   100% {
-    box-shadow: 0 0 8px rgba(244, 67, 54, 0.3);
+    box-shadow: 0 0 8px rgba(244, 67, 54, 0.2);
   }
 }
 
 /* Quantitative Fundamentals (Blue) active states */
 .QTF1.active {
-  background-color: rgba(33, 150, 243, 0.95) !important;
+  background-color: rgba(33, 150, 243, 0.9) !important;
   border-color: #2196f3;
-  box-shadow: 0 0 10px rgba(33, 150, 243, 0.7);
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 .QTF2.active {
-  background-color: rgba(33, 150, 243, 0.65) !important;
+  background-color: rgba(33, 150, 243, 0.7) !important;
   border-color: #2196f3;
-  box-shadow: 0 0 10px rgba(33, 150, 243, 0.7);
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 .QTF3.active {
-  background-color: rgba(33, 150, 243, 0.45) !important;
+  background-color: rgba(33, 150, 243, 0.5) !important;
   border-color: #2196f3;
-  box-shadow: 0 0 10px rgba(33, 150, 243, 0.7);
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 /* Qualitative Fundamentals (Purple) active states */
 .QLF1.active {
-  background-color: rgba(156, 39, 176, 0.95) !important;
+  background-color: rgba(156, 39, 176, 0.9) !important;
   border-color: #9c27b0;
-  box-shadow: 0 0 10px rgba(156, 39, 176, 0.7);
+  box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 .QLF2.active {
-  background-color: rgba(156, 39, 176, 0.65) !important;
+  background-color: rgba(156, 39, 176, 0.7) !important;
   border-color: #9c27b0;
-  box-shadow: 0 0 10px rgba(156, 39, 176, 0.7);
+  box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 .QLF3.active {
-  background-color: rgba(156, 39, 176, 0.45) !important;
+  background-color: rgba(156, 39, 176, 0.5) !important;
   border-color: #9c27b0;
-  box-shadow: 0 0 10px rgba(156, 39, 176, 0.7);
+  box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 /* Quantitative Technicals (Orange) active states */
 .QTT1.active {
-  background-color: rgba(255, 152, 0, 0.95) !important;
+  background-color: rgba(255, 152, 0, 0.9) !important;
   border-color: #ff9800;
-  box-shadow: 0 0 10px rgba(255, 152, 0, 0.7);
+  box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 .QTT2.active {
-  background-color: rgba(255, 152, 0, 0.65) !important;
+  background-color: rgba(255, 152, 0, 0.7) !important;
   border-color: #ff9800;
-  box-shadow: 0 0 10px rgba(255, 152, 0, 0.7);
+  box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 .QTT3.active {
-  background-color: rgba(255, 152, 0, 0.45) !important;
+  background-color: rgba(255, 152, 0, 0.5) !important;
   border-color: #ff9800;
-  box-shadow: 0 0 10px rgba(255, 152, 0, 0.7);
+  box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 /* Qualitative Technicals (Red) active states */
 .QLT1.active {
-  background-color: rgba(244, 67, 54, 0.95) !important;
+  background-color: rgba(244, 67, 54, 0.9) !important;
   border-color: #f44336;
-  box-shadow: 0 0 10px rgba(244, 67, 54, 0.7);
+  box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 .QLT2.active {
-  background-color: rgba(244, 67, 54, 0.65) !important;
+  background-color: rgba(244, 67, 54, 0.7) !important;
   border-color: #f44336;
-  box-shadow: 0 0 10px rgba(244, 67, 54, 0.7);
+  box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 .QLT3.active {
-  background-color: rgba(244, 67, 54, 0.45) !important;
+  background-color: rgba(244, 67, 54, 0.5) !important;
   border-color: #f44336;
-  box-shadow: 0 0 10px rgba(244, 67, 54, 0.7);
+  box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 .inactive {
@@ -335,128 +464,209 @@ body.bg-qlt {
   transition: all 0.2s ease;
 }
 
-/* Make all elements visible regardless of which is active */
-.page-indicator {
-  margin-top: 120px;
-  text-align: center;
+/* Main content area styling */
+.main-content-area {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
   padding: 20px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.5s ease;
 }
 
-/* Page indicator styling for different dimensions */
-body.bg-qtf .page-indicator {
-  background-color: rgba(33, 150, 243, 0.04);
-  border: 1px solid rgba(33, 150, 243, 0.15);
+.content-card {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-body.bg-qlf .page-indicator {
-  background-color: rgba(156, 39, 176, 0.04);
-  border: 1px solid rgba(156, 39, 176, 0.15);
+.content-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
 }
 
-body.bg-qtt .page-indicator {
-  background-color: rgba(255, 152, 0, 0.04);
-  border: 1px solid rgba(255, 152, 0, 0.15);
+/* Dimension Header */
+.dimension-header {
+  padding: 24px 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
 }
 
-body.bg-qlt .page-indicator {
-  background-color: rgba(244, 67, 54, 0.04);
-  border: 1px solid rgba(244, 67, 54, 0.15);
+.dimension-title {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
-.page-indicator h1 {
-  margin-bottom: 10px;
+.dimension-indicator {
+  display: inline-block;
+  font-size: 0.9rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.04);
+  color: #666;
 }
 
-.page-indicator p {
+/* Sub Navigation */
+.sub-navigation {
+  padding: 0 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.sub-nav-list {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+}
+
+.sub-nav-item {
+  padding: 15px 0;
+  position: relative;
+}
+
+.sub-nav-item a {
+  text-decoration: none;
+  color: #666;
+  font-size: 0.95rem;
+  padding: 5px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.sub-nav-item a:hover {
+  color: #333;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.sub-nav-item.active a {
+  color: #333;
+  font-weight: 500;
+}
+
+.sub-nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  transition: all 0.2s ease;
+}
+
+/* Content Container */
+.content-container {
+  padding: 30px;
+  max-height: calc(100vh - 180px); /* Adjust based on header + nav heights */
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.content-section {
+  line-height: 1.6;
+}
+
+.content-section h3 {
+  margin: 0 0 15px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.content-section h4 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #444;
+}
+
+.content-section p {
+  margin-bottom: 20px;
   color: #555;
+  font-size: 0.95rem;
 }
 
-.dimension-reference {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #f0f0f0;
+/* Metrics Summary */
+.metrics-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 20px 0 30px;
+}
+
+.metric-box {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 15px 20px;
   border-radius: 8px;
-  text-align: left;
-  transition: all 0.5s ease;
-  border-left: 4px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
 }
 
-/* Dimension reference styling for different corners */
-body.bg-qtf .dimension-reference {
-  border-left: 3px solid rgba(33, 150, 243, 0.4);
-  background-color: rgba(33, 150, 243, 0.02);
+.metric-box:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
 }
 
-body.bg-qlf .dimension-reference {
-  border-left: 3px solid rgba(156, 39, 176, 0.4);
-  background-color: rgba(156, 39, 176, 0.02);
+.placeholder-content {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
 }
 
-body.bg-qtt .dimension-reference {
-  border-left: 3px solid rgba(255, 152, 0, 0.4);
-  background-color: rgba(255, 152, 0, 0.02);
+/* Theme-specific styling for each corner */
+body.bg-qtf .dimension-indicator {
+  background-color: rgba(33, 150, 243, 0.08);
+  color: rgba(33, 150, 243, 0.9);
 }
 
-body.bg-qlt .dimension-reference {
-  border-left: 3px solid rgba(244, 67, 54, 0.4);
-  background-color: rgba(244, 67, 54, 0.02);
+body.bg-qlf .dimension-indicator {
+  background-color: rgba(156, 39, 176, 0.08);
+  color: rgba(156, 39, 176, 0.9);
 }
 
-/* Highlight the active dimension in the reference guide */
-body.bg-qtf .dimension-reference p:nth-child(2) {
-  font-weight: 500;
-  background-color: rgba(33, 150, 243, 0.06);
-  padding: 3px 5px;
-  border-radius: 4px;
+body.bg-qtt .dimension-indicator {
+  background-color: rgba(255, 152, 0, 0.08);
+  color: rgba(255, 152, 0, 0.9);
 }
 
-body.bg-qlf .dimension-reference p:nth-child(3) {
-  font-weight: 500;
-  background-color: rgba(156, 39, 176, 0.06);
-  padding: 3px 5px;
-  border-radius: 4px;
+body.bg-qlt .dimension-indicator {
+  background-color: rgba(244, 67, 54, 0.08);
+  color: rgba(244, 67, 54, 0.9);
 }
 
-body.bg-qtt .dimension-reference p:nth-child(4) {
-  font-weight: 500;
-  background-color: rgba(255, 152, 0, 0.06);
-  padding: 3px 5px;
-  border-radius: 4px;
+body.bg-qtf .dimension-title {
+  color: rgba(33, 150, 243, 0.9);
 }
 
-body.bg-qlt .dimension-reference p:nth-child(5) {
-  font-weight: 500;
-  background-color: rgba(244, 67, 54, 0.06);
-  padding: 3px 5px;
-  border-radius: 4px;
+body.bg-qlf .dimension-title {
+  color: rgba(156, 39, 176, 0.9);
 }
 
-.dimension-reference h2 {
-  margin-bottom: 10px;
-  font-size: 1.2em;
+body.bg-qtt .dimension-title {
+  color: rgba(255, 152, 0, 0.9);
 }
 
-.dimension-reference p {
-  margin: 5px 0;
+body.bg-qlt .dimension-title {
+  color: rgba(244, 67, 54, 0.9);
 }
 
-/* Add colors to dimension references to match active state colors */
-.dimension-reference p:nth-child(2) strong {
-  color: #2196f3;
+body.bg-qtf .sub-nav-item.active::after {
+  background-color: rgba(33, 150, 243, 0.9);
 }
 
-.dimension-reference p:nth-child(3) strong {
-  color: #9c27b0;
+body.bg-qlf .sub-nav-item.active::after {
+  background-color: rgba(156, 39, 176, 0.9);
 }
 
-.dimension-reference p:nth-child(4) strong {
-  color: #ff9800;
+body.bg-qtt .sub-nav-item.active::after {
+  background-color: rgba(255, 152, 0, 0.9);
 }
 
-.dimension-reference p:nth-child(5) strong {
-  color: #f44336;
+body.bg-qlt .sub-nav-item.active::after {
+  background-color: rgba(244, 67, 54, 0.9);
 }

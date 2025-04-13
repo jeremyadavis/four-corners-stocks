@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Corner Navigation Stacks -->
     <div class="navigation-container qtf-container">
       <div class="quarter-circle QTF1" data-page="QTF1"></div>
       <div class="quarter-circle QTF2" data-page="QTF2"></div>
@@ -31,30 +32,91 @@
       <div class="quarter-circle QLT3" data-page="QLT3"></div>
     </div>
 
-    <div class="page-indicator">
-      <h1>Current Page: <span id="current-page">QTF1</span></h1>
-      <p>Navigation Guide:</p>
-      <ul>
-        <li>
-          Press <strong>LEFT/RIGHT</strong> arrows to cycle between all four
-          corner navigation sets
-        </li>
-        <li>
-          For Top corners: Press <strong>UP</strong> arrow key to go to a
-          smaller/inner circle, <strong>DOWN</strong> for larger/outer circle
-        </li>
-        <li>
-          For Bottom corners: Press <strong>UP</strong> arrow key to go to a
-          larger/outer circle, <strong>DOWN</strong> for smaller/inner circle
-        </li>
-        <li>Click directly on any circle to select it</li>
-      </ul>
-      <div class="dimension-reference">
-        <h2>Dimension Matrix</h2>
-        <p><strong>QTF</strong>: Quantitative Fundamentals (Top-Left)</p>
-        <p><strong>QLF</strong>: Qualitative Fundamentals (Top-Right)</p>
-        <p><strong>QTT</strong>: Quantitative Technicals (Bottom-Left)</p>
-        <p><strong>QLT</strong>: Qualitative Technicals (Bottom-Right)</p>
+    <!-- Main Content Area -->
+    <div class="main-content-area">
+      <div class="content-card">
+        <!-- Current dimension header -->
+        <div class="dimension-header">
+          <h2 class="dimension-title">
+            <span id="current-dimension">Quantitative Fundamentals</span>
+          </h2>
+          <div class="dimension-indicator">
+            Current Section: <span id="current-page">QTF1</span>
+          </div>
+        </div>
+
+        <!-- Sub navigation -->
+        <div class="sub-navigation">
+          <ul class="sub-nav-list">
+            <li class="sub-nav-item active"><a href="#">Overview</a></li>
+            <li class="sub-nav-item"><a href="#">Metrics</a></li>
+            <li class="sub-nav-item"><a href="#">Analysis</a></li>
+            <li class="sub-nav-item"><a href="#">Historical Data</a></li>
+          </ul>
+        </div>
+
+        <!-- Content container -->
+        <div class="content-container">
+          <section class="content-section">
+            <h3>Dimension Overview</h3>
+            <p>
+              This section focuses on the quantifiable aspects of a company's
+              financial performance and position. Quantitative fundamentals
+              provide a numerical basis for evaluating a stock's potential value
+              and growth prospects.
+            </p>
+
+            <div class="metrics-summary">
+              <div class="metric-box">
+                <h4>Revenue Growth</h4>
+                <p>
+                  Year-over-year revenue growth measures how quickly a company
+                  is expanding.
+                </p>
+              </div>
+              <div class="metric-box">
+                <h4>Profit Margins</h4>
+                <p>
+                  Margins indicate how efficiently a company converts revenue
+                  into profits.
+                </p>
+              </div>
+              <div class="metric-box">
+                <h4>Return on Equity</h4>
+                <p>
+                  ROE measures how effectively a company uses shareholder
+                  investments.
+                </p>
+              </div>
+            </div>
+
+            <h3>Key Indicators</h3>
+            <p>
+              When evaluating stocks through this dimension, focus on consistent
+              trends rather than single-period metrics. Long-term stability in
+              these numbers often indicates a well-managed company with
+              sustainable advantages.
+            </p>
+
+            <div class="placeholder-content">
+              <p>
+                Additional content for this dimension will display specific
+                metrics, comparison charts, and industry benchmarks to help with
+                your analysis process.
+              </p>
+              <p>
+                This framework helps you evaluate stocks through multiple
+                dimensions simultaneously, giving you a more complete picture
+                than traditional single-focused analysis methods.
+              </p>
+              <p>
+                Navigate through different levels within this dimension to
+                explore metrics with varying degrees of detail and importance to
+                your investment strategy.
+              </p>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
 
