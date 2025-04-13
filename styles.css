@@ -91,24 +91,24 @@ body.bg-qlt {
   z-index: 10;
 }
 
-/* Top-right corner - Quantitative Technicals (QTT) */
-.qtt-container {
+/* Top-right corner - Qualitative Fundamentals (QLF) */
+.qlf-container {
   position: fixed;
   top: 0;
   right: 0;
   z-index: 10;
 }
 
-/* Bottom-left corner - Qualitative Technicals (QLT) */
-.qlt-container {
+/* Bottom-left corner - Quantitative Technicals (QTT) */
+.qtt-container {
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 10;
 }
 
-/* Bottom-right corner - Qualitative Fundamentals (QLF) */
-.qlf-container {
+/* Bottom-right corner - Qualitative Technicals (QLT) */
+.qlt-container {
   position: fixed;
   bottom: 0;
   right: 0;

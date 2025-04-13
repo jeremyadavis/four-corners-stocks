@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Define navigation order for cycling between corners
-  const navigationOrder = ['QTF', 'QTT', 'QLT', 'QLF']; // Order: top-left, top-right, bottom-left, bottom-right
+  const navigationOrder = ['QTF', 'QLF', 'QTT', 'QLT']; // Updated order: top-left, top-right, bottom-left, bottom-right
 
   // Set initial state
   let currentPage = 'QTF1';
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Check if a set is in the top half or bottom half
   function isTopSet(set) {
-    return set === 'QTF' || set === 'QTT';
+    return set === 'QTF' || set === 'QLF';
   }
 
   // Update visibility of page elements

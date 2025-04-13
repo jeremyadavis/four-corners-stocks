@@ -4,6 +4,17 @@
 
 Four Corners Stocks is a multidimensional stock analysis platform designed to evaluate stocks through four distinct, complementary dimensions. The interface is built around a novel "circle nav stack" concept, leveraging spatial positioning to represent different analytical dimensions and their depth levels.
 
+It also promotes rapid analysis due to using keyboard navigation to cycle between and through dimensions.
+
+## Dimension Matrix
+
+The Four Corners approach organizes stock analysis along two axes, with the screen position of each dimension matching its place in the conceptual matrix:
+
+|                  | **Quantitative**              | **Qualitative**             |
+| ---------------- | ----------------------------- | --------------------------- |
+| **Fundamentals** | **QTF** (Top-Left, Blue)      | **QLF** (Top-Right, Purple) |
+| **Technicals**   | **QTT** (Bottom-Left, Orange) | **QLT** (Bottom-Right, Red) |
+
 ## The Four Dimensions
 
 The application organizes stock analysis into four fundamental dimensions, each represented by a distinct color and positioned in a specific corner of the screen:
@@ -13,19 +24,19 @@ The application organizes stock analysis into four fundamental dimensions, each 
    - Focuses on measurable financial data like revenue growth, profit margins, and return on equity
    - Provides numerical basis for evaluating stock value
 
-2. **Quantitative Technicals (QTT)** - Top Right - Orange
+2. **Qualitative Fundamentals (QLF)** - Top Right - Purple
+
+   - Explores company management, competitive positioning, and industry trends
+   - Offers insights that numerical analysis might miss
+
+3. **Quantitative Technicals (QTT)** - Bottom Left - Orange
 
    - Addresses measurable market behavior such as price movements, volume patterns, and momentum indicators
    - Helps identify market trends and timing opportunities
 
-3. **Qualitative Technicals (QLT)** - Bottom Left - Red
-
+4. **Qualitative Technicals (QLT)** - Bottom Right - Red
    - Examines market sentiment, trading psychology, and pattern recognition
    - Provides context for quantitative technical analysis
-
-4. **Qualitative Fundamentals (QLF)** - Bottom Right - Purple
-   - Explores company management, competitive positioning, and industry trends
-   - Offers insights that numerical analysis might miss
 
 ## Circle Nav Stack Concept
 
@@ -56,15 +67,15 @@ The application implements an intuitive navigation system that allows users to m
 
 ### Keyboard Navigation
 
-- **Left/Right Arrow Keys**: Navigate between dimensions in clockwise order:
+- **Left/Right Arrow Keys**: Navigate between dimensions in the following order:
 
-  - QTF (top-left) → QTT (top-right) → QLT (bottom-left) → QLF (bottom-right)
+  - QTF (top-left) → QLF (top-right) → QTT (bottom-left) → QLT (bottom-right)
 
 - **Up/Down Arrow Keys**: Navigate between depth levels within a dimension
-  - Top corners (QTF, QTT):
+  - Top corners (QTF, QLF):
     - Up = Move to a smaller circle (lower level)
     - Down = Move to a larger circle (higher level)
-  - Bottom corners (QLT, QLF):
+  - Bottom corners (QTT, QLT):
     - Up = Move to a larger circle (higher level)
     - Down = Move to a smaller circle (lower level)
 
@@ -142,12 +153,12 @@ This creates a matrix of information that allows users to systematically explore
 The correct navigation order is defined in the JavaScript:
 
 ```javascript
-const navigationOrder = ['QTF', 'QTT', 'QLT', 'QLF']; // Order: top-left, top-right, bottom-left, bottom-right
+const navigationOrder = ['QTF', 'QLF', 'QTT', 'QLT']; // Order: top-left, bottom-right, top-right, bottom-left
 ```
 
 ### Dimension-to-Position Mapping
 
-Each dimension has a specific corner position:
+Each dimension is mapped to a specific corner position that matches its place in the conceptual matrix:
 
 ```css
 /* Top-left corner - Quantitative Fundamentals (QTF) */
@@ -157,22 +168,22 @@ Each dimension has a specific corner position:
   left: 0;
 }
 
-/* Top-right corner - Quantitative Technicals (QTT) */
-.qtt-container {
+/* Top-right corner - Qualitative Fundamentals (QLF) */
+.qlf-container {
   position: fixed;
   top: 0;
   right: 0;
 }
 
-/* Bottom-left corner - Qualitative Technicals (QLT) */
-.qlt-container {
+/* Bottom-left corner - Quantitative Technicals (QTT) */
+.qtt-container {
   position: fixed;
   bottom: 0;
   left: 0;
 }
 
-/* Bottom-right corner - Qualitative Fundamentals (QLF) */
-.qlf-container {
+/* Bottom-right corner - Qualitative Technicals (QLT) */
+.qlt-container {
   position: fixed;
   bottom: 0;
   right: 0;
