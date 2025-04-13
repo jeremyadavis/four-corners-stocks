@@ -190,6 +190,7 @@ body.bg-qlt {
 .QLT3:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   transform: scale(1.05);
+  z-index: 15 !important; /* Ensure hovering element is always on top */
 }
 
 /* Specific hover colors for each corner */
@@ -225,7 +226,7 @@ body.bg-qlt {
   width: 32px;
   height: 32px;
   background-color: #f0f0f0;
-  z-index: 9; /* Highest z-index among circles in its corner */
+  z-index: 12; /* Highest z-index among circles in its corner */
 }
 
 /* Common styles for all second level circles (medium) */
@@ -236,7 +237,7 @@ body.bg-qlt {
   width: 48px;
   height: 48px;
   background-color: #e0e0e0;
-  z-index: 8; /* Middle z-index among circles in its corner */
+  z-index: 11; /* Middle z-index among circles in its corner */
 }
 
 /* Common styles for all third level circles (largest) */
@@ -247,7 +248,7 @@ body.bg-qlt {
   width: 64px;
   height: 64px;
   background-color: #d0d0d0;
-  z-index: 7; /* Lowest z-index among circles in its corner */
+  z-index: 10; /* Lowest z-index among circles in its corner */
 }
 
 /* Base active state styles */

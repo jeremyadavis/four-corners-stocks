@@ -54,6 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
     quarterCircles.forEach((circle) => {
       circle.classList.add('inactive');
       circle.classList.remove('active');
+
+      // Ensure proper z-index based on level
+      const circleLevel = parseInt(circle.className.match(/[A-Z]{3}(\d)/)[1]);
+      if (circleLevel === 1) {
+        circle.style.zIndex = 12;
+      } else if (circleLevel === 2) {
+        circle.style.zIndex = 11;
+      } else if (circleLevel === 3) {
+        circle.style.zIndex = 10;
+      }
     });
 
     // Set the active circle
@@ -63,6 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (activeElement) {
       activeElement.classList.add('active');
       activeElement.classList.remove('inactive');
+
+      // When a circle is active, boost its z-index to ensure it's visible
+      const activeLevel = parseInt(currentPage.charAt(3));
+      activeElement.style.zIndex = 13; // Always put active element on top
 
       // Add a special class to the outer circle of the current corner
       const outerCircle = document.querySelector(`.${currentSet}3`);
