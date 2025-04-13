@@ -34,14 +34,18 @@ Each dimension is represented by a "Circle Nav Stack" in its respective corner. 
 ### Stack Composition
 
 - Each stack consists of three concentric quarter-circle elements
-- The circles represent different levels of analytical depth within a dimension
-- Level 1 (innermost circle): High-level overview and key metrics
-- Level 2 (middle circle): Detailed analysis and comparisons
-- Level 3 (outermost circle): In-depth specialized analysis and advanced metrics
+- The circles represent different levels of analytical scope within a dimension:
+  - Level 1 (innermost circle): Company-specific analysis - closest to the analyzed stock
+  - Level 2 (middle circle): Sector/industry analysis - broader context
+  - Level 3 (outermost circle): Macro/country level analysis - widest context
 
 ### Visual Design
 
 - Z-index ordering ensures that inner circles appear on top of outer circles, creating a 3D stack effect
+- Color opacity reinforces the proximity concept:
+  - Innermost circle (Level 1): Full opacity (100%) - direct focus on the company
+  - Middle circle (Level 2): Medium opacity (50%) - sector context
+  - Outermost circle (Level 3): Light opacity (25%) - macro environment
 - When hovering over any circle in the stack, it subtly enlarges and glows with its dimension color
 - Active dimension/level has more pronounced visual highlighting
 - The outermost circle of the active dimension displays a pulsing animation to reinforce the current context
@@ -212,14 +216,32 @@ For proper 3D effect, z-index values must be maintained:
 
 ### Color Theme Constants
 
-Each dimension has a specific color scheme:
+Each dimension has a specific color scheme, with opacity varying by level to indicate proximity to the analyzed stock:
 
-- QTF (Blue): `rgba(33, 150, 243, X)` / `#2196f3`
-- QTT (Orange): `rgba(255, 152, 0, X)` / `#ff9800`
-- QLT (Red): `rgba(244, 67, 54, X)` / `#f44336`
-- QLF (Purple): `rgba(156, 39, 176, X)` / `#9c27b0`
+- QTF (Blue):
 
-where X represents the opacity value (0.3 for hover, 0.5-0.9 for active states)
+  - Level 1 (Company): `rgba(33, 150, 243, 1.0)` / `#2196f3`
+  - Level 2 (Sector): `rgba(33, 150, 243, 0.5)`
+  - Level 3 (Macro): `rgba(33, 150, 243, 0.25)`
+
+- QTT (Orange):
+
+  - Level 1 (Company): `rgba(255, 152, 0, 1.0)` / `#ff9800`
+  - Level 2 (Sector): `rgba(255, 152, 0, 0.5)`
+  - Level 3 (Macro): `rgba(255, 152, 0, 0.25)`
+
+- QLT (Red):
+
+  - Level 1 (Company): `rgba(244, 67, 54, 1.0)` / `#f44336`
+  - Level 2 (Sector): `rgba(244, 67, 54, 0.5)`
+  - Level 3 (Macro): `rgba(244, 67, 54, 0.25)`
+
+- QLF (Purple):
+  - Level 1 (Company): `rgba(156, 39, 176, 1.0)` / `#9c27b0`
+  - Level 2 (Sector): `rgba(156, 39, 176, 0.5)`
+  - Level 3 (Macro): `rgba(156, 39, 176, 0.25)`
+
+Hover states also follow this progression with slightly lower opacities (0.8, 0.4, 0.2) to maintain the visual hierarchy while indicating interactivity.
 
 ### Keyboard Navigation Logic
 

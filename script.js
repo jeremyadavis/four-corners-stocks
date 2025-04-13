@@ -66,23 +66,51 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Set the active circle
+    // Implement cascading active state for circles in the current dimension
+    if (currentLevel >= 1) {
+      // Level 1 is always active when current dimension is selected
+      const level1Selector = `.${currentSet}1`;
+      const level1Element = document.querySelector(level1Selector);
+      if (level1Element) {
+        level1Element.classList.add('active');
+        level1Element.classList.remove('inactive');
+        level1Element.style.zIndex = 12;
+      }
+    }
+
+    if (currentLevel >= 2) {
+      // Level 2 is active when level 2 or 3 is selected
+      const level2Selector = `.${currentSet}2`;
+      const level2Element = document.querySelector(level2Selector);
+      if (level2Element) {
+        level2Element.classList.add('active');
+        level2Element.classList.remove('inactive');
+        level2Element.style.zIndex = 11;
+      }
+    }
+
+    if (currentLevel === 3) {
+      // Level 3 is only active when level 3 is selected
+      const level3Selector = `.${currentSet}3`;
+      const level3Element = document.querySelector(level3Selector);
+      if (level3Element) {
+        level3Element.classList.add('active');
+        level3Element.classList.remove('inactive');
+        level3Element.style.zIndex = 10;
+      }
+    }
+
+    // Boost the z-index of the actual currently selected circle to ensure it's on top
     const activeSelector = `.${currentPage}`;
     const activeElement = document.querySelector(activeSelector);
-
     if (activeElement) {
-      activeElement.classList.add('active');
-      activeElement.classList.remove('inactive');
-
-      // When a circle is active, boost its z-index to ensure it's visible
-      const activeLevel = parseInt(currentPage.charAt(3));
       activeElement.style.zIndex = 13; // Always put active element on top
+    }
 
-      // Add a special class to the outer circle of the current corner
-      const outerCircle = document.querySelector(`.${currentSet}3`);
-      if (outerCircle) {
-        outerCircle.classList.add('corner-active');
-      }
+    // Add a special class to the outer circle of the current corner
+    const outerCircle = document.querySelector(`.${currentSet}3`);
+    if (outerCircle) {
+      outerCircle.classList.add('corner-active');
     }
   }
 

@@ -194,99 +194,140 @@ body.bg-qlt {
 }
 
 /* Specific hover colors for each corner */
-.QTF1:hover,
-.QTF2:hover,
+.QTF1:hover {
+  background-color: rgba(33, 150, 243, 0.8);
+}
+
+.QTF2:hover {
+  background-color: rgba(33, 150, 243, 0.4);
+}
+
 .QTF3:hover {
-  background-color: rgba(33, 150, 243, 0.3);
+  background-color: rgba(33, 150, 243, 0.2);
 }
 
-.QTT1:hover,
-.QTT2:hover,
+.QTT1:hover {
+  background-color: rgba(255, 152, 0, 0.8);
+}
+
+.QTT2:hover {
+  background-color: rgba(255, 152, 0, 0.4);
+}
+
 .QTT3:hover {
-  background-color: rgba(255, 152, 0, 0.3);
+  background-color: rgba(255, 152, 0, 0.2);
 }
 
-.QLT1:hover,
-.QLT2:hover,
+.QLT1:hover {
+  background-color: rgba(244, 67, 54, 0.8);
+}
+
+.QLT2:hover {
+  background-color: rgba(244, 67, 54, 0.4);
+}
+
 .QLT3:hover {
-  background-color: rgba(244, 67, 54, 0.3);
+  background-color: rgba(244, 67, 54, 0.2);
 }
 
-.QLF1:hover,
-.QLF2:hover,
+.QLF1:hover {
+  background-color: rgba(156, 39, 176, 0.8);
+}
+
+.QLF2:hover {
+  background-color: rgba(156, 39, 176, 0.4);
+}
+
 .QLF3:hover {
-  background-color: rgba(156, 39, 176, 0.3);
+  background-color: rgba(156, 39, 176, 0.2);
 }
 
-/* Common styles for all first level circles (smallest) */
+/* Common styles for all first level circles (smallest/innermost) */
 .QTF1,
 .QLF1,
 .QTT1,
 .QLT1 {
   width: 32px;
   height: 32px;
-  background-color: #f0f0f0;
+  background-color: #e0e0e0;
   z-index: 12; /* Highest z-index among circles in its corner */
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* Common styles for all second level circles (medium) */
+/* Common styles for all second level circles (middle) */
 .QTF2,
 .QLF2,
 .QTT2,
 .QLT2 {
   width: 48px;
   height: 48px;
-  background-color: #e0e0e0;
+  background-color: #e8e8e8;
   z-index: 11; /* Middle z-index among circles in its corner */
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* Common styles for all third level circles (largest) */
+/* Common styles for all third level circles (largest/outermost) */
 .QTF3,
 .QLF3,
 .QTT3,
 .QLT3 {
   width: 64px;
   height: 64px;
-  background-color: #d0d0d0;
+  background-color: #f0f0f0;
   z-index: 10; /* Lowest z-index among circles in its corner */
+  border: 2px solid rgba(0, 0, 0, 0.15);
 }
 
 /* Base active state styles */
 .active {
-  border: 2px solid rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   transform: scale(1.05);
   opacity: 1 !important;
   transition: all 0.2s ease-in-out;
 }
 
+/* Active state borders based on level */
+/* Blue (QTF) active states */
+.QTF1.active,
+.QTF2.active {
+  border: 1px solid rgba(33, 150, 243, 0.6);
+}
+.QTF3.active {
+  border: 3px solid rgba(33, 150, 243, 0.6);
+}
+
+/* Orange (QTT) active states */
+.QTT1.active,
+.QTT2.active {
+  border: 1px solid rgba(255, 152, 0, 0.6);
+}
+.QTT3.active {
+  border: 3px solid rgba(255, 152, 0, 0.6);
+}
+
+/* Red (QLT) active states */
+.QLT1.active,
+.QLT2.active {
+  border: 1px solid rgba(244, 67, 54, 0.6);
+}
+.QLT3.active {
+  border: 3px solid rgba(244, 67, 54, 0.6);
+}
+
+/* Purple (QLF) active states */
+.QLF1.active,
+.QLF2.active {
+  border: 1px solid rgba(156, 39, 176, 0.6);
+}
+.QLF3.active {
+  border: 3px solid rgba(156, 39, 176, 0.6);
+}
+
 /* Outer circle highlighting when corner is active */
 .corner-active {
-  border: 1px solid rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
   opacity: 0.9 !important;
   animation: pulse 2s infinite;
-}
-
-/* Specific outer circle highlighting for each corner */
-.QTF3.corner-active {
-  border-color: rgba(33, 150, 243, 0.6);
-  box-shadow: 0 0 12px rgba(33, 150, 243, 0.3);
-}
-
-.QTT3.corner-active {
-  border-color: rgba(255, 152, 0, 0.6);
-  box-shadow: 0 0 12px rgba(255, 152, 0, 0.3);
-}
-
-.QLT3.corner-active {
-  border-color: rgba(244, 67, 54, 0.6);
-  box-shadow: 0 0 12px rgba(244, 67, 54, 0.3);
-}
-
-.QLF3.corner-active {
-  border-color: rgba(156, 39, 176, 0.6);
-  box-shadow: 0 0 12px rgba(156, 39, 176, 0.3);
 }
 
 /* Pulse animation for active corners */
@@ -369,90 +410,90 @@ body.bg-qlt {
 
 /* Quantitative Fundamentals (Blue) active states */
 .QTF1.active {
-  background-color: rgba(33, 150, 243, 0.9) !important;
+  background-color: rgba(33, 150, 243, 1) !important;
   border-color: #2196f3;
   box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
   z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 .QTF2.active {
-  background-color: rgba(33, 150, 243, 0.7) !important;
-  border-color: #2196f3;
-  box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
-  z-index: 12 !important; /* Ensure active circle is on top */
-}
-
-.QTF3.active {
   background-color: rgba(33, 150, 243, 0.5) !important;
   border-color: #2196f3;
   box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
-  z-index: 12 !important; /* Ensure active circle is on top */
+  z-index: 11 !important; /* Ensure active circle is on top */
+}
+
+.QTF3.active {
+  background-color: rgba(33, 150, 243, 0.25) !important;
+  border-color: #2196f3;
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+  z-index: 10 !important; /* Ensure active circle is on top */
 }
 
 /* Quantitative Technicals (Orange) active states */
 .QTT1.active {
-  background-color: rgba(255, 152, 0, 0.9) !important;
+  background-color: rgba(255, 152, 0, 1) !important;
   border-color: #ff9800;
   box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
   z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 .QTT2.active {
-  background-color: rgba(255, 152, 0, 0.7) !important;
-  border-color: #ff9800;
-  box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
-  z-index: 12 !important; /* Ensure active circle is on top */
-}
-
-.QTT3.active {
   background-color: rgba(255, 152, 0, 0.5) !important;
   border-color: #ff9800;
   box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
-  z-index: 12 !important; /* Ensure active circle is on top */
+  z-index: 11 !important; /* Ensure active circle is on top */
+}
+
+.QTT3.active {
+  background-color: rgba(255, 152, 0, 0.25) !important;
+  border-color: #ff9800;
+  box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+  z-index: 10 !important; /* Ensure active circle is on top */
 }
 
 /* Qualitative Technicals (Red) active states */
 .QLT1.active {
-  background-color: rgba(244, 67, 54, 0.9) !important;
+  background-color: rgba(244, 67, 54, 1) !important;
   border-color: #f44336;
   box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
   z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 .QLT2.active {
-  background-color: rgba(244, 67, 54, 0.7) !important;
-  border-color: #f44336;
-  box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
-  z-index: 12 !important; /* Ensure active circle is on top */
-}
-
-.QLT3.active {
   background-color: rgba(244, 67, 54, 0.5) !important;
   border-color: #f44336;
   box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
-  z-index: 12 !important; /* Ensure active circle is on top */
+  z-index: 11 !important; /* Ensure active circle is on top */
+}
+
+.QLT3.active {
+  background-color: rgba(244, 67, 54, 0.25) !important;
+  border-color: #f44336;
+  box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
+  z-index: 10 !important; /* Ensure active circle is on top */
 }
 
 /* Qualitative Fundamentals (Purple) active states */
 .QLF1.active {
-  background-color: rgba(156, 39, 176, 0.9) !important;
+  background-color: rgba(156, 39, 176, 1) !important;
   border-color: #9c27b0;
   box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
   z-index: 12 !important; /* Ensure active circle is on top */
 }
 
 .QLF2.active {
-  background-color: rgba(156, 39, 176, 0.7) !important;
-  border-color: #9c27b0;
-  box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
-  z-index: 12 !important; /* Ensure active circle is on top */
-}
-
-.QLF3.active {
   background-color: rgba(156, 39, 176, 0.5) !important;
   border-color: #9c27b0;
   box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
-  z-index: 12 !important; /* Ensure active circle is on top */
+  z-index: 11 !important; /* Ensure active circle is on top */
+}
+
+.QLF3.active {
+  background-color: rgba(156, 39, 176, 0.25) !important;
+  border-color: #9c27b0;
+  box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
+  z-index: 10 !important; /* Ensure active circle is on top */
 }
 
 .inactive {
@@ -670,4 +711,25 @@ body.bg-qlt .sub-nav-item.active::after {
 
 body.bg-qlf .sub-nav-item.active::after {
   background-color: rgba(156, 39, 176, 0.9);
+}
+
+/* Specific outer circle highlighting for each corner */
+.QTF3.corner-active {
+  border-color: rgba(33, 150, 243, 0.6);
+  box-shadow: 0 0 12px rgba(33, 150, 243, 0.3);
+}
+
+.QTT3.corner-active {
+  border-color: rgba(255, 152, 0, 0.6);
+  box-shadow: 0 0 12px rgba(255, 152, 0, 0.3);
+}
+
+.QLT3.corner-active {
+  border-color: rgba(244, 67, 54, 0.6);
+  box-shadow: 0 0 12px rgba(244, 67, 54, 0.3);
+}
+
+.QLF3.corner-active {
+  border-color: rgba(156, 39, 176, 0.6);
+  box-shadow: 0 0 12px rgba(156, 39, 176, 0.3);
 }
