@@ -7,17 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Define dimension names
   const dimensionNames = {
     QTF: 'Quantitative Fundamentals',
-    QLF: 'Qualitative Fundamentals',
     QTT: 'Quantitative Technicals',
     QLT: 'Qualitative Technicals',
+    QLF: 'Qualitative Fundamentals',
   };
 
-  // Define navigation order for cycling between corners in clockwise direction
-  const navigationOrder = ['QTF', 'QTT', 'QLT', 'QLF']; // Clockwise: top-left, top-right, bottom-right, bottom-left
+  // Define navigation order for cycling between corners
+  const navigationOrder = ['QTF', 'QTT', 'QLT', 'QLF']; // Order: top-left, top-right, bottom-left, bottom-right
 
   // Set initial state
   let currentPage = 'QTF1';
-  let currentSet = 'QTF'; // Now can be 'QTF', 'QLF', 'QTT', or 'QLT'
+  let currentSet = 'QTF'; // Now can be 'QTF', 'QTT', 'QLT', or 'QLF'
   let currentLevel = 1; // 1, 2, or 3
 
   // Check if a set is in the top half or bottom half
@@ -148,6 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentIdx !== -1) {
           // Get next index with wraparound
           const nextIndex = (currentIdx + 1) % navigationOrder.length;
+          console.log(
+            `Moving from ${currentSet} (index ${currentIdx}) to ${navigationOrder[nextIndex]} (index ${nextIndex})`
+          );
           currentSet = navigationOrder[nextIndex];
           currentPage = currentSet + currentLevel;
           updatePageVisibility();
@@ -161,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     circle.addEventListener('click', () => {
       currentPage = circle.dataset.page;
       // Update the currentSet and currentLevel based on the clicked circle
-      currentSet = currentPage.substring(0, 3); // 'QTF', 'QLF', 'QTT', or 'QLT'
+      currentSet = currentPage.substring(0, 3); // 'QTF', 'QTT', 'QLT', or 'QLF'
       currentLevel = parseInt(currentPage.charAt(3)); // 1, 2, or 3
       updatePageVisibility();
     });

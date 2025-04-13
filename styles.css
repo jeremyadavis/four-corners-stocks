@@ -91,14 +91,6 @@ body.bg-qlt {
   z-index: 10;
 }
 
-/* Bottom-left corner - Qualitative Fundamentals (QLF) */
-.qlf-container {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
-}
-
 /* Top-right corner - Quantitative Technicals (QTT) */
 .qtt-container {
   position: fixed;
@@ -107,8 +99,16 @@ body.bg-qlt {
   z-index: 10;
 }
 
-/* Bottom-right corner - Qualitative Technicals (QLT) */
+/* Bottom-left corner - Qualitative Technicals (QLT) */
 .qlt-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+/* Bottom-right corner - Qualitative Fundamentals (QLF) */
+.qlf-container {
   position: fixed;
   bottom: 0;
   right: 0;
@@ -130,21 +130,6 @@ body.bg-qlt {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Quarter circle bottom left (QLF) */
-.QLF1,
-.QLF2,
-.QLF3 {
-  border-radius: 0 100% 0 0;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  cursor: pointer;
-  box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.1);
-}
-
 /* Quarter circle top right (QTT) */
 .QTT1,
 .QTT2,
@@ -160,10 +145,25 @@ body.bg-qlt {
   box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Quarter circle bottom right (QLT) */
+/* Quarter circle bottom left (QLT) */
 .QLT1,
 .QLT2,
 .QLT3 {
+  border-radius: 0 100% 0 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Quarter circle bottom right (QLF) */
+.QLF1,
+.QLF2,
+.QLF3 {
   border-radius: 100% 0 0 0;
   position: absolute;
   bottom: 0;
@@ -200,12 +200,6 @@ body.bg-qlt {
   background-color: rgba(33, 150, 243, 0.3);
 }
 
-.QLF1:hover,
-.QLF2:hover,
-.QLF3:hover {
-  background-color: rgba(156, 39, 176, 0.3);
-}
-
 .QTT1:hover,
 .QTT2:hover,
 .QTT3:hover {
@@ -216,6 +210,12 @@ body.bg-qlt {
 .QLT2:hover,
 .QLT3:hover {
   background-color: rgba(244, 67, 54, 0.3);
+}
+
+.QLF1:hover,
+.QLF2:hover,
+.QLF3:hover {
+  background-color: rgba(156, 39, 176, 0.3);
 }
 
 /* Common styles for all first level circles (smallest) */
@@ -274,11 +274,6 @@ body.bg-qlt {
   box-shadow: 0 0 12px rgba(33, 150, 243, 0.3);
 }
 
-.QLF3.corner-active {
-  border-color: rgba(156, 39, 176, 0.6);
-  box-shadow: 0 0 12px rgba(156, 39, 176, 0.3);
-}
-
 .QTT3.corner-active {
   border-color: rgba(255, 152, 0, 0.6);
   box-shadow: 0 0 12px rgba(255, 152, 0, 0.3);
@@ -287,6 +282,11 @@ body.bg-qlt {
 .QLT3.corner-active {
   border-color: rgba(244, 67, 54, 0.6);
   box-shadow: 0 0 12px rgba(244, 67, 54, 0.3);
+}
+
+.QLF3.corner-active {
+  border-color: rgba(156, 39, 176, 0.6);
+  box-shadow: 0 0 12px rgba(156, 39, 176, 0.3);
 }
 
 /* Pulse animation for active corners */
@@ -307,16 +307,16 @@ body.bg-qlt {
   animation: pulse-blue 2s infinite;
 }
 
-.QLF3.corner-active {
-  animation: pulse-purple 2s infinite;
-}
-
 .QTT3.corner-active {
   animation: pulse-orange 2s infinite;
 }
 
 .QLT3.corner-active {
   animation: pulse-red 2s infinite;
+}
+
+.QLF3.corner-active {
+  animation: pulse-purple 2s infinite;
 }
 
 @keyframes pulse-blue {
@@ -389,28 +389,6 @@ body.bg-qlt {
   z-index: 12 !important; /* Ensure active circle is on top */
 }
 
-/* Qualitative Fundamentals (Purple) active states */
-.QLF1.active {
-  background-color: rgba(156, 39, 176, 0.9) !important;
-  border-color: #9c27b0;
-  box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
-  z-index: 12 !important; /* Ensure active circle is on top */
-}
-
-.QLF2.active {
-  background-color: rgba(156, 39, 176, 0.7) !important;
-  border-color: #9c27b0;
-  box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
-  z-index: 12 !important; /* Ensure active circle is on top */
-}
-
-.QLF3.active {
-  background-color: rgba(156, 39, 176, 0.5) !important;
-  border-color: #9c27b0;
-  box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
-  z-index: 12 !important; /* Ensure active circle is on top */
-}
-
 /* Quantitative Technicals (Orange) active states */
 .QTT1.active {
   background-color: rgba(255, 152, 0, 0.9) !important;
@@ -452,6 +430,28 @@ body.bg-qlt {
   background-color: rgba(244, 67, 54, 0.5) !important;
   border-color: #f44336;
   box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
+}
+
+/* Qualitative Fundamentals (Purple) active states */
+.QLF1.active {
+  background-color: rgba(156, 39, 176, 0.9) !important;
+  border-color: #9c27b0;
+  box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
+}
+
+.QLF2.active {
+  background-color: rgba(156, 39, 176, 0.7) !important;
+  border-color: #9c27b0;
+  box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
+  z-index: 12 !important; /* Ensure active circle is on top */
+}
+
+.QLF3.active {
+  background-color: rgba(156, 39, 176, 0.5) !important;
+  border-color: #9c27b0;
+  box-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
   z-index: 12 !important; /* Ensure active circle is on top */
 }
 
@@ -625,11 +625,6 @@ body.bg-qtf .dimension-indicator {
   color: rgba(33, 150, 243, 0.9);
 }
 
-body.bg-qlf .dimension-indicator {
-  background-color: rgba(156, 39, 176, 0.08);
-  color: rgba(156, 39, 176, 0.9);
-}
-
 body.bg-qtt .dimension-indicator {
   background-color: rgba(255, 152, 0, 0.08);
   color: rgba(255, 152, 0, 0.9);
@@ -640,12 +635,13 @@ body.bg-qlt .dimension-indicator {
   color: rgba(244, 67, 54, 0.9);
 }
 
-body.bg-qtf .dimension-title {
-  color: rgba(33, 150, 243, 0.9);
+body.bg-qlf .dimension-indicator {
+  background-color: rgba(156, 39, 176, 0.08);
+  color: rgba(156, 39, 176, 0.9);
 }
 
-body.bg-qlf .dimension-title {
-  color: rgba(156, 39, 176, 0.9);
+body.bg-qtf .dimension-title {
+  color: rgba(33, 150, 243, 0.9);
 }
 
 body.bg-qtt .dimension-title {
@@ -656,12 +652,12 @@ body.bg-qlt .dimension-title {
   color: rgba(244, 67, 54, 0.9);
 }
 
-body.bg-qtf .sub-nav-item.active::after {
-  background-color: rgba(33, 150, 243, 0.9);
+body.bg-qlf .dimension-title {
+  color: rgba(156, 39, 176, 0.9);
 }
 
-body.bg-qlf .sub-nav-item.active::after {
-  background-color: rgba(156, 39, 176, 0.9);
+body.bg-qtf .sub-nav-item.active::after {
+  background-color: rgba(33, 150, 243, 0.9);
 }
 
 body.bg-qtt .sub-nav-item.active::after {
@@ -670,4 +666,8 @@ body.bg-qtt .sub-nav-item.active::after {
 
 body.bg-qlt .sub-nav-item.active::after {
   background-color: rgba(244, 67, 54, 0.9);
+}
+
+body.bg-qlf .sub-nav-item.active::after {
+  background-color: rgba(156, 39, 176, 0.9);
 }
