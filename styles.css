@@ -115,7 +115,7 @@ body.bg-qlt {
   z-index: 10;
 }
 
-/* Quarter circle top left (QTF) */
+/* Quarter circle top left (QTF) - Quantitative Fundamentals (Blue) */
 .QTF1,
 .QTF2,
 .QTF3 {
@@ -130,10 +130,10 @@ body.bg-qlt {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Quarter circle top right (QTT) */
-.QTT1,
-.QTT2,
-.QTT3 {
+/* Quarter circle top right (QLF) - Qualitative Fundamentals (Purple) */
+.QLF1,
+.QLF2,
+.QLF3 {
   border-radius: 0 0 0 100%;
   position: absolute;
   top: 0;
@@ -145,10 +145,10 @@ body.bg-qlt {
   box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Quarter circle bottom left (QLT) */
-.QLT1,
-.QLT2,
-.QLT3 {
+/* Quarter circle bottom left (QTT) - Quantitative Technicals (Orange) */
+.QTT1,
+.QTT2,
+.QTT3 {
   border-radius: 0 100% 0 0;
   position: absolute;
   bottom: 0;
@@ -160,10 +160,10 @@ body.bg-qlt {
   box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Quarter circle bottom right (QLF) */
-.QLF1,
-.QLF2,
-.QLF3 {
+/* Quarter circle bottom right (QLT) - Qualitative Technicals (Red) */
+.QLT1,
+.QLT2,
+.QLT3 {
   border-radius: 100% 0 0 0;
   position: absolute;
   bottom: 0;
