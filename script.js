@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     QLT: 'Qualitative Technicals',
   };
 
-  // Define navigation order for cycling between corners
-  const navigationOrder = ['QTF', 'QLF', 'QTT', 'QLT']; // Complete navigation cycle
+  // Define navigation order for cycling between corners in clockwise direction
+  const navigationOrder = ['QTF', 'QTT', 'QLT', 'QLF']; // Clockwise: top-left, top-right, bottom-right, bottom-left
 
   // Set initial state
   let currentPage = 'QTF1';
