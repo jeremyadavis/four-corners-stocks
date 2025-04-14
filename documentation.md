@@ -189,14 +189,106 @@ The Four Corners approach embodies several key UX principles:
 
 ### Content Organization
 
-Within each dimension and level, content is further organized into tabbed sections:
+Within each dimension and level, content is further organized into tabbed sections. Each dimension has a specific set of 5 sub-navigation items that can be applied consistently across all three levels (Macro, Sector, Company):
 
-- Overview
-- Metrics
-- Analysis
-- Historical Data
+#### Quantitative Fundamentals (QTF) Sub-Navigation
 
-This creates a matrix of information that allows users to systematically explore stock data across dimensions, depth levels, and content categories.
+1. **Overview**
+
+   - High-level snapshot of key numerical indicators (e.g., summary of growth, profitability, or market size).
+
+2. **Valuation**
+
+   - Focus on valuation metrics (P/E, EV/EBITDA, price-to-book, etc.) and how they compare to historical or peer benchmarks.
+
+3. **Performance & Growth**
+
+   - Examines revenue/earnings growth rates, margin trends, and overall trajectory of financial performance.
+
+4. **Financial Health**
+
+   - Looks at balance sheet strength (debt ratios, liquidity), cash flow stability, and solvency.
+
+5. **Comparisons & Benchmarks**
+   - Compares the entity (macro, sector, or company) against peers, historical ranges, or global standards.
+
+#### Qualitative Fundamentals (QLF) Sub-Navigation
+
+1. **Overview**
+
+   - Summarizes big-picture qualitative factors: major themes, strategic context, or overarching narratives at the relevant level.
+
+2. **Competitive Landscape**
+
+   - Evaluates the nature of competition, barriers to entry, and potential sources of competitive advantage.
+
+3. **Strategy & Leadership**
+
+   - Reviews governance structures, management track record, corporate culture, and strategic direction.
+
+4. **Regulatory & Policy Factors**
+
+   - Considers key regulations, government policies, and industry-specific rules shaping the playing field.
+
+5. **Risks & Opportunities**
+   - Identifies headwinds or tailwinds, disruptive technologies, or shifts in consumer preferences.
+
+#### Quantitative Technicals (QTT) Sub-Navigation
+
+1. **Overview**
+
+   - Quick synopsis of the current technical "picture," such as index/stock chart highlights or recent price movements.
+
+2. **Price & Volume Trends**
+
+   - Analyzes how price is moving (trend lines, support/resistance) and whether volume supports those moves.
+
+3. **Momentum Indicators**
+
+   - Focus on RSI, MACD, moving averages, or other standard signals showing overbought/oversold conditions.
+
+4. **Volatility & Liquidity**
+
+   - Examines measures like beta, average daily trading volume, bid-ask spreads, or market-wide volatility indices.
+
+5. **Historical Patterns & Comparisons**
+   - Looks at past price cycles, seasonality, or longer-term chart patterns to contextualize current technical signals.
+
+#### Qualitative Technicals (QLT) Sub-Navigation
+
+1. **Overview**
+
+   - High-level summary of market mood, media coverage, and prevailing sentiment across the chosen level.
+
+2. **Market Sentiment & Media**
+
+   - Gathers insights from headlines, social media, retail investor buzz, or broader sentiment indicators.
+
+3. **Analyst & Expert Opinions**
+
+   - Collates ratings, target price changes, macro or sector forecasts, and commentary from notable experts.
+
+4. **Behavioral Indicators**
+
+   - Highlights insider buying/selling, short interest, crowd psychology, and fear/greed dynamics.
+
+5. **Key Events & Catalysts**
+   - Identifies upcoming earnings reports, product launches, regulatory decisions, or geopolitical events that might shift sentiment.
+
+This creates a comprehensive matrix of information that allows users to systematically explore stock data across dimensions, depth levels, and specific content categories. For any given stock analysis, there are 4 dimensions × 3 levels × 5 sub-navigation items = 60 potential views, providing a holistic analytical framework.
+
+#### Sub-Navigation Implementation
+
+The sub-navigation for each dimension and level is implemented as a horizontal tab bar positioned below the main content heading. When users navigate to a specific dimension and level (e.g., QTF2 - Quantitative Fundamentals at Sector level), they will see the appropriate set of 5 tabs for that dimension:
+
+- The tabs will adopt the color scheme of the active dimension (blue for QTF, purple for QLF, etc.)
+- The active tab will be highlighted with full opacity of the dimension color
+- Users can navigate between tabs using:
+  - Direct click on the tab
+  - Tab key (with focus indicator)
+  - Number keys 1-5 when the content area is in focus
+
+The sub-navigation persists when moving between levels within the same dimension, preserving the selected tab where appropriate. When moving between dimensions, the system defaults to the Overview tab until the user selects a different one.
 
 ### Technical Implementation Reference
 
@@ -363,3 +455,166 @@ When changing dimensions or levels, the following steps occur:
 6. Apply a pulsing animation to the outermost circle of the active dimension
 
 This reference information should help maintain consistency in the application's design and behavior during future development.
+
+#### Sub-Navigation Technical Implementation
+
+The sub-navigation system will extend the existing navigation framework with the following components:
+
+1. **Tab Definition Structure**:
+
+```javascript
+// Define sub-navigation items for each dimension
+const subNavItems = {
+  QTF: [
+    'Overview',
+    'Valuation',
+    'Performance & Growth',
+    'Financial Health',
+    'Comparisons & Benchmarks',
+  ],
+  QLF: [
+    'Overview',
+    'Competitive Landscape',
+    'Strategy & Leadership',
+    'Regulatory & Policy Factors',
+    'Risks & Opportunities',
+  ],
+  QTT: [
+    'Overview',
+    'Price & Volume Trends',
+    'Momentum Indicators',
+    'Volatility & Liquidity',
+    'Historical Patterns & Comparisons',
+  ],
+  QLT: [
+    'Overview',
+    'Market Sentiment & Media',
+    'Analyst & Expert Opinions',
+    'Behavioral Indicators',
+    'Key Events & Catalysts',
+  ],
+};
+
+// Track the active sub-navigation tab for each dimension
+const activeSubNav = {
+  QTF: 0, // Default to Overview (index 0)
+  QLF: 0,
+  QTT: 0,
+  QLT: 0,
+};
+```
+
+2. **HTML Structure**:
+
+```html
+<div class="subnav-container">
+  <ul class="subnav-tabs" id="currentDimensionSubnav">
+    <!-- Tab items are generated dynamically based on the active dimension -->
+  </ul>
+</div>
+
+<div class="content-container">
+  <div class="content-section active" id="content-section-0">
+    <!-- Content for first tab (Overview) -->
+  </div>
+  <!-- Additional content sections are generated dynamically -->
+</div>
+```
+
+3. **Tab Generation Function**:
+
+```javascript
+function updateSubnavTabs() {
+  const tabs = subNavItems[currentSet]; // Get tabs for current dimension
+  const subnavElement = document.getElementById('currentDimensionSubnav');
+
+  // Clear existing tabs
+  subnavElement.innerHTML = '';
+
+  // Generate new tabs
+  tabs.forEach((tabName, index) => {
+    const tabElement = document.createElement('li');
+    tabElement.className = 'subnav-tab';
+    tabElement.dataset.index = index;
+    tabElement.innerText = tabName;
+
+    if (index === activeSubNav[currentSet]) {
+      tabElement.classList.add('active-tab');
+    }
+
+    tabElement.addEventListener('click', () => {
+      switchSubnavTab(index);
+    });
+
+    subnavElement.appendChild(tabElement);
+  });
+}
+```
+
+4. **Tab Switching Logic**:
+
+```javascript
+function switchSubnavTab(tabIndex) {
+  // Update active tab tracking
+  activeSubNav[currentSet] = tabIndex;
+
+  // Update UI to show active tab
+  document.querySelectorAll('.subnav-tab').forEach((tab, index) => {
+    if (index === tabIndex) {
+      tab.classList.add('active-tab');
+    } else {
+      tab.classList.remove('active-tab');
+    }
+  });
+
+  // Show corresponding content
+  document.querySelectorAll('.content-section').forEach((section, index) => {
+    if (index === tabIndex) {
+      section.classList.add('active');
+    } else {
+      section.classList.remove('active');
+    }
+  });
+}
+```
+
+5. **Keyboard Navigation Enhancement**:
+
+```javascript
+// Add to existing keyboard event handler
+document.addEventListener('keydown', (event) => {
+  // Existing dimension and level navigation...
+
+  // Number keys 1-5 for subnav tabs
+  if (event.key >= '1' && event.key <= '5') {
+    const tabIndex = parseInt(event.key) - 1;
+    switchSubnavTab(tabIndex);
+  }
+
+  // Tab key navigation when content area is focused
+  // (Implementation will depend on focus management system)
+});
+```
+
+6. **Persistence between Level Changes**:
+
+```javascript
+// Modify the existing page update function to preserve sub-nav state
+function updatePage(newPage) {
+  // Get dimension and level from page identifier
+  const newSet = newPage.substring(0, 3);
+
+  // If dimension is changing, default to Overview tab
+  if (newSet !== currentSet) {
+    // Reset to Overview tab for new dimension
+    switchSubnavTab(0);
+  }
+
+  // Existing page update code...
+
+  // Update subnav tabs for the current dimension
+  updateSubnavTabs();
+}
+```
+
+This implementation maintains the existing navigation architecture while adding the sub-navigation layer that adapts to the current dimension. It preserves state appropriately when navigating and allows for both mouse and keyboard interaction.

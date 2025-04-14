@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   const quarterCircles = document.querySelectorAll('.quarter-circle');
-  const currentPageIndicator = document.getElementById('current-page');
-  const currentDimensionIndicator =
-    document.getElementById('current-dimension');
+  // Remove references to the elements that no longer exist
+  // const currentPageIndicator = document.getElementById('current-page');
+  // const currentDimensionIndicator = document.getElementById('current-dimension');
+
+  // Add reference to the new dimension level title element
+  const dimensionLevelTitle = document.getElementById('dimension-level-title');
 
   // Define dimension names
   const dimensionNames = {
@@ -10,6 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     QTT: 'Quantitative Technicals',
     QLT: 'Qualitative Technicals',
     QLF: 'Qualitative Fundamentals',
+  };
+
+  // Define level names
+  const levelNames = {
+    1: 'Company',
+    2: 'Sector',
+    3: 'Macro',
   };
 
   // Define navigation order for cycling between corners
@@ -27,11 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Update visibility of page elements
   function updatePageVisibility() {
-    // Update the page indicator text
-    currentPageIndicator.textContent = currentPage;
+    // Remove the page indicator text updates since elements no longer exist
+    // currentPageIndicator.textContent = currentPage;
+    // currentDimensionIndicator.textContent = dimensionNames[currentSet];
 
-    // Update the dimension title
-    currentDimensionIndicator.textContent = dimensionNames[currentSet];
+    // Update the dimension level title
+    if (dimensionLevelTitle) {
+      dimensionLevelTitle.textContent = `${dimensionNames[currentSet]}: ${levelNames[currentLevel]}`;
+    }
 
     // Set base z-index for all corners
     const corners = ['QTF', 'QLF', 'QTT', 'QLT'];
