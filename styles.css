@@ -79,7 +79,7 @@ body.bg-qlt {
   height: 64px;
   overflow: visible;
   padding: 4px;
-  z-index: 90; /* Higher than content area */
+  z-index: 10; /* Higher than chart and content area */
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
@@ -562,13 +562,15 @@ body.bg-qlt {
 
 /* Main content area styling */
 .main-content-area {
-  width: 100%;
-  max-width: 900px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 20px;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
   position: relative;
+  z-index: 5; /* Increased z-index to appear above the chart */
+  padding: 20px;
+  margin-top: 20px;
 }
 
 /* Page title indicator styling */
@@ -790,4 +792,92 @@ body.bg-qlf .sub-nav-item.active::after {
   --qlt-color: #f44336; /* Red */
   --qlf-color: #9c27b0; /* Purple */
   --border-thickness: 5px; /* Thickness for the dimension indicator border */
+}
+
+/* Background Chart Styles */
+.background-chart-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1; /* Above body background, below the main content */
+  pointer-events: none; /* Allows clicking through to elements behind it */
+}
+
+.chart-time-controls {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 4px 8px;
+  border-radius: 16px;
+  z-index: 2;
+  pointer-events: auto; /* Makes the controls clickable */
+}
+
+.time-button {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 2px 4px;
+  transition: color 0.2s ease;
+}
+
+.time-button:hover {
+  color: #ccc;
+}
+
+.time-button.active {
+  color: #fff;
+}
+
+/* Dynamically change the color based on active dimension */
+body.bg-qtf .time-button.active {
+  color: #2196f3; /* QTF blue */
+}
+
+body.bg-qlf .time-button.active {
+  color: #9c27b0; /* QLF purple */
+}
+
+body.bg-qtt .time-button.active {
+  color: #ff9800; /* QTT orange */
+}
+
+body.bg-qlt .time-button.active {
+  color: #f44336; /* QLT red */
+}
+
+.chart-settings-button {
+  margin-left: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.chart-settings-button svg {
+  width: 14px;
+  height: 14px;
+  stroke: #888;
+  transition: stroke 0.2s ease;
+}
+
+.chart-settings-button:hover svg {
+  stroke: #ccc;
+}
+
+#backgroundChart {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0.3; /* Slightly reduced opacity to be subtle but visible */
 }
