@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Add reference to the new dimension level title element
   const dimensionLevelTitle = document.getElementById('dimension-level-title');
+  const dimensionSubnav = document.getElementById('dimension-subnav');
 
   // Define dimension names
   const dimensionNames = {
@@ -22,6 +23,46 @@ document.addEventListener('DOMContentLoaded', () => {
     3: 'Macro',
   };
 
+  // Define sub-navigation items for each dimension based on documentation
+  const subNavItems = {
+    QTF: [
+      'Overview',
+      'Valuation',
+      'Performance & Growth',
+      'Financial Health',
+      'Comparisons & Benchmarks',
+    ],
+    QLF: [
+      'Overview',
+      'Competitive Landscape',
+      'Strategy & Leadership',
+      'Regulatory & Policy Factors',
+      'Risks & Opportunities',
+    ],
+    QTT: [
+      'Overview',
+      'Price & Volume Trends',
+      'Momentum Indicators',
+      'Volatility & Liquidity',
+      'Historical Patterns & Comparisons',
+    ],
+    QLT: [
+      'Overview',
+      'Market Sentiment & Media',
+      'Analyst & Expert Opinions',
+      'Behavioral Indicators',
+      'Key Events & Catalysts',
+    ],
+  };
+
+  // Track the active sub-navigation tab for each dimension
+  const activeSubNav = {
+    QTF: 0, // Default to Overview (index 0)
+    QLF: 0,
+    QTT: 0,
+    QLT: 0,
+  };
+
   // Define navigation order for cycling between corners
   const navigationOrder = ['QTF', 'QLF', 'QTT', 'QLT']; // Updated order: top-left, top-right, bottom-left, bottom-right
 
@@ -35,6 +76,57 @@ document.addEventListener('DOMContentLoaded', () => {
     return set === 'QTF' || set === 'QLF';
   }
 
+  // Update the subnav tabs based on the active dimension
+  function updateSubnavTabs() {
+    if (!dimensionSubnav) return;
+
+    const tabs = subNavItems[currentSet]; // Get tabs for current dimension
+
+    // Clear existing tabs
+    dimensionSubnav.innerHTML = '';
+
+    // Generate new tabs
+    tabs.forEach((tabName, index) => {
+      const tabElement = document.createElement('li');
+      tabElement.className = 'sub-nav-item';
+      if (index === activeSubNav[currentSet]) {
+        tabElement.classList.add('active');
+      }
+
+      const linkElement = document.createElement('a');
+      linkElement.href = '#';
+      linkElement.textContent = tabName;
+
+      // Add click event to handle tab switching
+      linkElement.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchSubnavTab(index);
+      });
+
+      tabElement.appendChild(linkElement);
+      dimensionSubnav.appendChild(tabElement);
+    });
+  }
+
+  // Handle switching between subnav tabs
+  function switchSubnavTab(tabIndex) {
+    // Update active tab tracking
+    activeSubNav[currentSet] = tabIndex;
+
+    // Update UI to show active tab
+    const subNavItems = dimensionSubnav.querySelectorAll('.sub-nav-item');
+    subNavItems.forEach((item, index) => {
+      if (index === tabIndex) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    // Here you would also update the content section to match the selected tab
+    // For now, we'll just update the tab UI
+  }
+
   // Update visibility of page elements
   function updatePageVisibility() {
     // Remove the page indicator text updates since elements no longer exist
@@ -45,6 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (dimensionLevelTitle) {
       dimensionLevelTitle.textContent = `${dimensionNames[currentSet]}: ${levelNames[currentLevel]}`;
     }
+
+    // Update sub-navigation tabs to match the current dimension
+    updateSubnavTabs();
 
     // Set base z-index for all corners
     const corners = ['QTF', 'QLF', 'QTT', 'QLT'];
@@ -195,6 +290,18 @@ document.addEventListener('DOMContentLoaded', () => {
           currentSet = navigationOrder[nextIndex];
           currentPage = currentSet + currentLevel;
           updatePageVisibility();
+        }
+        break;
+
+      // Add number key navigation for subnav tabs
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+        const tabIndex = parseInt(event.key) - 1;
+        if (tabIndex >= 0 && tabIndex < subNavItems[currentSet].length) {
+          switchSubnavTab(tabIndex);
         }
         break;
     }

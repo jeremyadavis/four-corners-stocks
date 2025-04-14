@@ -83,7 +83,7 @@ body.bg-qlt {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
-/* Top-left corner - Quantitative Fundamentals (QTF) */
+/* Corner positioning - Each dimension has a specific corner */
 .qtf-container {
   position: fixed;
   top: 0;
@@ -91,7 +91,6 @@ body.bg-qlt {
   z-index: 10;
 }
 
-/* Top-right corner - Qualitative Fundamentals (QLF) */
 .qlf-container {
   position: fixed;
   top: 0;
@@ -99,7 +98,6 @@ body.bg-qlt {
   z-index: 10;
 }
 
-/* Bottom-left corner - Quantitative Technicals (QTT) */
 .qtt-container {
   position: fixed;
   bottom: 0;
@@ -107,7 +105,6 @@ body.bg-qlt {
   z-index: 10;
 }
 
-/* Bottom-right corner - Qualitative Technicals (QLT) */
 .qlt-container {
   position: fixed;
   bottom: 0;
@@ -115,6 +112,7 @@ body.bg-qlt {
   z-index: 10;
 }
 
+/* Quarter circle shapes and positioning */
 /* Quarter circle top left (QTF) - Quantitative Fundamentals (Blue) */
 .QTF1,
 .QTF2,
@@ -175,6 +173,43 @@ body.bg-qlt {
   box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Common styles for circles by level */
+/* Level 1 (innermost) circles */
+.QTF1,
+.QLF1,
+.QTT1,
+.QLT1 {
+  width: 32px;
+  height: 32px;
+  background-color: #e0e0e0;
+  z-index: 12; /* Highest z-index among circles in its corner */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Level 2 (middle) circles */
+.QTF2,
+.QLF2,
+.QTT2,
+.QLT2 {
+  width: 48px;
+  height: 48px;
+  background-color: #e8e8e8;
+  z-index: 11; /* Middle z-index among circles in its corner */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Level 3 (outermost) circles */
+.QTF3,
+.QLF3,
+.QTT3,
+.QLT3 {
+  width: 64px;
+  height: 64px;
+  background-color: #f0f0f0;
+  z-index: 10; /* Lowest z-index among circles in its corner */
+  border: 2px solid rgba(0, 0, 0, 0.15);
+}
+
 /* Hover effects for all circles */
 .QTF1:hover,
 .QTF2:hover,
@@ -193,7 +228,7 @@ body.bg-qlt {
   z-index: 15 !important; /* Ensure hovering element is always on top */
 }
 
-/* Specific hover colors for each corner */
+/* Hover color effects by dimension and level */
 .QTF1:hover {
   background-color: color-mix(in srgb, var(--qtf-color) 80%, transparent);
 }
@@ -242,42 +277,6 @@ body.bg-qlt {
   background-color: color-mix(in srgb, var(--qlf-color) 20%, transparent);
 }
 
-/* Common styles for all first level circles (smallest/innermost) */
-.QTF1,
-.QLF1,
-.QTT1,
-.QLT1 {
-  width: 32px;
-  height: 32px;
-  background-color: #e0e0e0;
-  z-index: 12; /* Highest z-index among circles in its corner */
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-/* Common styles for all second level circles (middle) */
-.QTF2,
-.QLF2,
-.QTT2,
-.QLT2 {
-  width: 48px;
-  height: 48px;
-  background-color: #e8e8e8;
-  z-index: 11; /* Middle z-index among circles in its corner */
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-/* Common styles for all third level circles (largest/outermost) */
-.QTF3,
-.QLF3,
-.QTT3,
-.QLT3 {
-  width: 64px;
-  height: 64px;
-  background-color: #f0f0f0;
-  z-index: 10; /* Lowest z-index among circles in its corner */
-  border: 2px solid rgba(0, 0, 0, 0.15);
-}
-
 /* Base active state styles */
 .active {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
@@ -286,59 +285,181 @@ body.bg-qlt {
   transition: all 0.2s ease-in-out;
 }
 
-/* Active state borders based on level */
-/* Blue (QTF) active states */
+/* Active state borders for all dimensions */
 .QTF1.active,
-.QTF2.active {
+.QTF2.active,
+.QLF1.active,
+.QLF2.active,
+.QTT1.active,
+.QTT2.active,
+.QLT1.active,
+.QLT2.active {
   border: 1px solid var(--qtf-color);
   border-opacity: 0.6;
 }
-.QTF3.active {
+
+.QTF3.active,
+.QLF3.active,
+.QTT3.active,
+.QLT3.active {
   border: 3px solid var(--qtf-color);
   border-opacity: 0.6;
 }
 
-/* Orange (QTT) active states */
-.QTT1.active,
-.QTT2.active {
-  border: 1px solid var(--qtt-color);
-  border-opacity: 0.6;
-}
-.QTT3.active {
-  border: 3px solid var(--qtt-color);
-  border-opacity: 0.6;
+/* Specific border colors for each dimension */
+.QTF1.active,
+.QTF2.active,
+.QTF3.active {
+  border-color: var(--qtf-color);
 }
 
-/* Red (QLT) active states */
-.QLT1.active,
-.QLT2.active {
-  border: 1px solid var(--qlt-color);
-  border-opacity: 0.6;
-}
-.QLT3.active {
-  border: 3px solid var(--qlt-color);
-  border-opacity: 0.6;
-}
-
-/* Purple (QLF) active states */
 .QLF1.active,
-.QLF2.active {
-  border: 1px solid var(--qlf-color);
-  border-opacity: 0.6;
-}
+.QLF2.active,
 .QLF3.active {
-  border: 3px solid var(--qlf-color);
-  border-opacity: 0.6;
+  border-color: var(--qlf-color);
 }
 
-/* Outer circle highlighting when corner is active */
+.QTT1.active,
+.QTT2.active,
+.QTT3.active {
+  border-color: var(--qtt-color);
+}
+
+.QLT1.active,
+.QLT2.active,
+.QLT3.active {
+  border-color: var(--qlt-color);
+}
+
+/* Active state background colors and effects */
+/* Quantitative Fundamentals (Blue) active states */
+.QTF1.active {
+  background-color: var(--qtf-color) !important;
+  border-color: var(--qtf-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--qtf-color) 50%, transparent);
+  z-index: 12 !important;
+}
+
+.QTF2.active {
+  background-color: color-mix(
+    in srgb,
+    var(--qtf-color) 50%,
+    transparent
+  ) !important;
+  border-color: var(--qtf-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--qtf-color) 50%, transparent);
+  z-index: 11 !important;
+}
+
+.QTF3.active {
+  background-color: color-mix(
+    in srgb,
+    var(--qtf-color) 25%,
+    transparent
+  ) !important;
+  border-color: var(--qtf-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--qtf-color) 50%, transparent);
+  z-index: 10 !important;
+}
+
+/* Quantitative Technicals (Orange) active states */
+.QTT1.active {
+  background-color: var(--qtt-color) !important;
+  border-color: var(--qtt-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--qtt-color) 50%, transparent);
+  z-index: 12 !important;
+}
+
+.QTT2.active {
+  background-color: color-mix(
+    in srgb,
+    var(--qtt-color) 50%,
+    transparent
+  ) !important;
+  border-color: var(--qtt-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--qtt-color) 50%, transparent);
+  z-index: 11 !important;
+}
+
+.QTT3.active {
+  background-color: color-mix(
+    in srgb,
+    var(--qtt-color) 25%,
+    transparent
+  ) !important;
+  border-color: var(--qtt-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--qtt-color) 50%, transparent);
+  z-index: 10 !important;
+}
+
+/* Qualitative Technicals (Red) active states */
+.QLT1.active {
+  background-color: var(--qlt-color) !important;
+  border-color: var(--qlt-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--qlt-color) 50%, transparent);
+  z-index: 12 !important;
+}
+
+.QLT2.active {
+  background-color: color-mix(
+    in srgb,
+    var(--qlt-color) 50%,
+    transparent
+  ) !important;
+  border-color: var(--qlt-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--qlt-color) 50%, transparent);
+  z-index: 11 !important;
+}
+
+.QLT3.active {
+  background-color: color-mix(
+    in srgb,
+    var(--qlt-color) 25%,
+    transparent
+  ) !important;
+  border-color: var(--qlt-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--qlt-color) 50%, transparent);
+  z-index: 10 !important;
+}
+
+/* Qualitative Fundamentals (Purple) active states */
+.QLF1.active {
+  background-color: var(--qlf-color) !important;
+  border-color: var(--qlf-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--qlf-color) 50%, transparent);
+  z-index: 12 !important;
+}
+
+.QLF2.active {
+  background-color: color-mix(
+    in srgb,
+    var(--qlf-color) 50%,
+    transparent
+  ) !important;
+  border-color: var(--qlf-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--qlf-color) 50%, transparent);
+  z-index: 11 !important;
+}
+
+.QLF3.active {
+  background-color: color-mix(
+    in srgb,
+    var(--qlf-color) 25%,
+    transparent
+  ) !important;
+  border-color: var(--qlf-color);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--qlf-color) 50%, transparent);
+  z-index: 10 !important;
+}
+
+/* Outer circle highlighting and pulse animations */
 .corner-active {
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
   opacity: 0.9 !important;
   animation: pulse 2s infinite;
 }
 
-/* Pulse animation for active corners */
+/* Base pulse animation */
 @keyframes pulse {
   0% {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
@@ -351,21 +472,33 @@ body.bg-qlt {
   }
 }
 
-/* Colored pulse animations for each corner */
+/* Dimension-specific pulse animations */
 .QTF3.corner-active {
   animation: pulse-blue 2s infinite;
+  border-color: var(--qtf-color);
+  border-opacity: 0.6;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--qtf-color) 30%, transparent);
 }
 
 .QTT3.corner-active {
   animation: pulse-orange 2s infinite;
+  border-color: var(--qtt-color);
+  border-opacity: 0.6;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--qtt-color) 30%, transparent);
 }
 
 .QLT3.corner-active {
   animation: pulse-red 2s infinite;
+  border-color: var(--qlt-color);
+  border-opacity: 0.6;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--qlt-color) 30%, transparent);
 }
 
 .QLF3.corner-active {
   animation: pulse-purple 2s infinite;
+  border-color: var(--qlf-color);
+  border-opacity: 0.6;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--qlf-color) 30%, transparent);
 }
 
 @keyframes pulse-blue {
@@ -416,126 +549,7 @@ body.bg-qlt {
   }
 }
 
-/* Quantitative Fundamentals (Blue) active states */
-.QTF1.active {
-  background-color: var(--qtf-color) !important;
-  border-color: var(--qtf-color);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--qtf-color) 50%, transparent);
-  z-index: 12 !important; /* Ensure active circle is on top */
-}
-
-.QTF2.active {
-  background-color: color-mix(
-    in srgb,
-    var(--qtf-color) 50%,
-    transparent
-  ) !important;
-  border-color: var(--qtf-color);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--qtf-color) 50%, transparent);
-  z-index: 11 !important; /* Ensure active circle is on top */
-}
-
-.QTF3.active {
-  background-color: color-mix(
-    in srgb,
-    var(--qtf-color) 25%,
-    transparent
-  ) !important;
-  border-color: var(--qtf-color);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--qtf-color) 50%, transparent);
-  z-index: 10 !important; /* Ensure active circle is on top */
-}
-
-/* Quantitative Technicals (Orange) active states */
-.QTT1.active {
-  background-color: var(--qtt-color) !important;
-  border-color: var(--qtt-color);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--qtt-color) 50%, transparent);
-  z-index: 12 !important; /* Ensure active circle is on top */
-}
-
-.QTT2.active {
-  background-color: color-mix(
-    in srgb,
-    var(--qtt-color) 50%,
-    transparent
-  ) !important;
-  border-color: var(--qtt-color);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--qtt-color) 50%, transparent);
-  z-index: 11 !important; /* Ensure active circle is on top */
-}
-
-.QTT3.active {
-  background-color: color-mix(
-    in srgb,
-    var(--qtt-color) 25%,
-    transparent
-  ) !important;
-  border-color: var(--qtt-color);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--qtt-color) 50%, transparent);
-  z-index: 10 !important; /* Ensure active circle is on top */
-}
-
-/* Qualitative Technicals (Red) active states */
-.QLT1.active {
-  background-color: var(--qlt-color) !important;
-  border-color: var(--qlt-color);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--qlt-color) 50%, transparent);
-  z-index: 12 !important; /* Ensure active circle is on top */
-}
-
-.QLT2.active {
-  background-color: color-mix(
-    in srgb,
-    var(--qlt-color) 50%,
-    transparent
-  ) !important;
-  border-color: var(--qlt-color);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--qlt-color) 50%, transparent);
-  z-index: 11 !important; /* Ensure active circle is on top */
-}
-
-.QLT3.active {
-  background-color: color-mix(
-    in srgb,
-    var(--qlt-color) 25%,
-    transparent
-  ) !important;
-  border-color: var(--qlt-color);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--qlt-color) 50%, transparent);
-  z-index: 10 !important; /* Ensure active circle is on top */
-}
-
-/* Qualitative Fundamentals (Purple) active states */
-.QLF1.active {
-  background-color: var(--qlf-color) !important;
-  border-color: var(--qlf-color);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--qlf-color) 50%, transparent);
-  z-index: 12 !important; /* Ensure active circle is on top */
-}
-
-.QLF2.active {
-  background-color: color-mix(
-    in srgb,
-    var(--qlf-color) 50%,
-    transparent
-  ) !important;
-  border-color: var(--qlf-color);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--qlf-color) 50%, transparent);
-  z-index: 11 !important; /* Ensure active circle is on top */
-}
-
-.QLF3.active {
-  background-color: color-mix(
-    in srgb,
-    var(--qlf-color) 25%,
-    transparent
-  ) !important;
-  border-color: var(--qlf-color);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--qlf-color) 50%, transparent);
-  z-index: 10 !important; /* Ensure active circle is on top */
-}
-
+/* Inactive state styling */
 .inactive {
   opacity: 0.7;
 }
@@ -585,15 +599,7 @@ body.bg-qlf .page-title-indicator {
   color: var(--qlf-color);
 }
 
-/* CSS Theme Variables */
-:root {
-  --qtf-color: #2196f3; /* Blue */
-  --qtt-color: #ff9800; /* Orange */
-  --qlt-color: #f44336; /* Red */
-  --qlf-color: #9c27b0; /* Purple */
-  --border-thickness: 5px; /* Thickness for the dimension indicator border */
-}
-
+/* Content card styling */
 .content-card {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.9);
@@ -610,7 +616,7 @@ body.bg-qlf .page-title-indicator {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
 }
 
-/* Dimension border colors for each corner */
+/* Dimension border colors for content card */
 body.bg-qtf .content-card {
   border-top: var(--border-thickness) solid var(--qtf-color);
 }
@@ -636,7 +642,7 @@ body.bg-qlf .content-card {
 
 /* Sub Navigation */
 .sub-navigation {
-  padding: 0 30px;
+  padding: 0 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   background-color: rgba(255, 255, 255, 0.4);
 }
@@ -644,31 +650,49 @@ body.bg-qlf .content-card {
 .sub-nav-list {
   display: flex;
   list-style: none;
-  gap: 10px;
+  width: 100%;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
 }
 
 .sub-nav-item {
-  padding: 15px 0;
+  padding: 12px 4px;
   position: relative;
+  text-align: center;
+  flex: 1;
+  min-width: 0;
+  margin: 0 2px;
 }
 
 .sub-nav-item a {
   text-decoration: none;
   color: #666;
-  font-size: 0.95rem;
-  padding: 5px 12px;
+  font-size: 0.85rem;
+  padding: 6px 4px;
   border-radius: 4px;
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  line-height: 1.3;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
 .sub-nav-item a:hover {
   color: #333;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .sub-nav-item.active a {
   color: #333;
   font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 .sub-nav-item.active::after {
@@ -681,6 +705,23 @@ body.bg-qlf .content-card {
   height: 3px;
   border-radius: 3px 3px 0 0;
   transition: all 0.2s ease;
+}
+
+/* Tab indicator colors using theme variables */
+body.bg-qtf .sub-nav-item.active::after {
+  background-color: var(--qtf-color);
+}
+
+body.bg-qtt .sub-nav-item.active::after {
+  background-color: var(--qtt-color);
+}
+
+body.bg-qlt .sub-nav-item.active::after {
+  background-color: var(--qlt-color);
+}
+
+body.bg-qlf .sub-nav-item.active::after {
+  background-color: var(--qlf-color);
 }
 
 /* Content Container */
@@ -742,83 +783,11 @@ body.bg-qlf .content-card {
   border-top: 1px dashed rgba(0, 0, 0, 0.1);
 }
 
-/* Theme-specific styling for dimension indicators */
-/* Remove these styles as they're no longer needed
-body.bg-qtf .dimension-indicator {
-  background-color: rgba(33, 150, 243, 0.08);
-  color: rgba(33, 150, 243, 0.9);
-}
-
-body.bg-qtt .dimension-indicator {
-  background-color: rgba(255, 152, 0, 0.08);
-  color: rgba(255, 152, 0, 0.9);
-}
-
-body.bg-qlt .dimension-indicator {
-  background-color: rgba(244, 67, 54, 0.08);
-  color: rgba(244, 67, 54, 0.9);
-}
-
-body.bg-qlf .dimension-indicator {
-  background-color: rgba(156, 39, 176, 0.08);
-  color: rgba(156, 39, 176, 0.9);
-}
-
-body.bg-qtf .dimension-title {
-  color: rgba(33, 150, 243, 0.9);
-}
-
-body.bg-qtt .dimension-title {
-  color: rgba(255, 152, 0, 0.9);
-}
-
-body.bg-qlt .dimension-title {
-  color: rgba(244, 67, 54, 0.9);
-}
-
-body.bg-qlf .dimension-title {
-  color: rgba(156, 39, 176, 0.9);
-}
-*/
-
-/* Tab indicator colors using theme variables */
-body.bg-qtf .sub-nav-item.active::after {
-  background-color: var(--qtf-color);
-}
-
-body.bg-qtt .sub-nav-item.active::after {
-  background-color: var(--qtt-color);
-}
-
-body.bg-qlt .sub-nav-item.active::after {
-  background-color: var(--qlt-color);
-}
-
-body.bg-qlf .sub-nav-item.active::after {
-  background-color: var(--qlf-color);
-}
-
-/* Specific outer circle highlighting for each corner */
-.QTF3.corner-active {
-  border-color: var(--qtf-color);
-  border-opacity: 0.6;
-  box-shadow: 0 0 12px color-mix(in srgb, var(--qtf-color) 30%, transparent);
-}
-
-.QTT3.corner-active {
-  border-color: var(--qtt-color);
-  border-opacity: 0.6;
-  box-shadow: 0 0 12px color-mix(in srgb, var(--qtt-color) 30%, transparent);
-}
-
-.QLT3.corner-active {
-  border-color: var(--qlt-color);
-  border-opacity: 0.6;
-  box-shadow: 0 0 12px color-mix(in srgb, var(--qlt-color) 30%, transparent);
-}
-
-.QLF3.corner-active {
-  border-color: var(--qlf-color);
-  border-opacity: 0.6;
-  box-shadow: 0 0 12px color-mix(in srgb, var(--qlf-color) 30%, transparent);
+/* CSS Theme Variables */
+:root {
+  --qtf-color: #2196f3; /* Blue */
+  --qtt-color: #ff9800; /* Orange */
+  --qlt-color: #f44336; /* Red */
+  --qlf-color: #9c27b0; /* Purple */
+  --border-thickness: 5px; /* Thickness for the dimension indicator border */
 }
