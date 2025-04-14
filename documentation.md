@@ -1,12 +1,89 @@
-# Four Corners Stocks - UX Documentation
+# Four Corners Stocks - Documentation
 
-## Conceptual Overview
+## Project Philosophy and Approach
+
+### Summary of Our Stock Analysis Approach Using Four Dimensions
+
+This framework organizes stock analysis into **four dimensions**, arranged in a 2×2 matrix. The _top row_ deals with **Fundamentals**, and the _bottom row_ deals with **Technicals**. The _left column_ represents **Quantitative** factors, while the _right column_ represents **Qualitative** factors.
+
+|                  | **Quantitative**                  | **Qualitative**                  |
+| ---------------- | --------------------------------- | -------------------------------- |
+| **Fundamentals** | **(A) Quantitative Fundamentals** | **(B) Qualitative Fundamentals** |
+| **Technicals**   | **(C) Quantitative Technicals**   | **(D) Qualitative Technicals**   |
+
+### Why We Use Four Dimensions
+
+1. **Comprehensive Coverage**
+
+   - By splitting fundamentals (the business's core reality) from technicals (market-driven data), and by separating quantitative (numerical) aspects from qualitative (strategic/intangible) aspects, we ensure no critical angle is missed.
+
+2. **Clarity & Organization**
+
+   - Each dimension focuses on a well-defined set of data points:
+     - **(A) Quantitative Fundamentals**: Financial statements, ratios, valuation metrics.
+     - **(B) Qualitative Fundamentals**: Moat, management quality, brand strength, corporate strategy.
+     - **(C) Quantitative Technicals**: Price/volume trends, chart patterns, momentum indicators.
+     - **(D) Qualitative Technicals**: Market sentiment, news-driven hype or fear, analyst/influencer opinions.
+
+3. **Flexible Analysis**
+   - Long-term investors may want to focus on the fundamentals first, while traders might emphasize the technicals first. The framework adapts to both styles yet maintains a consistent, systematic approach.
+
+### Incorporating the Three Levels of Analysis
+
+In each dimension, you can evaluate at three key levels:
+
+1. **Macro (Market/Global) Level**
+   - Consider overall economic indicators (e.g., GDP growth, interest rates, global events) and how they shape _all_ stocks.
+2. **Sector (Industry) Level**
+   - Investigate industry-specific drivers (e.g., competition, regulation, consumer trends) that influence a cluster of companies.
+3. **Company (Stock) Level**
+   - Drill down to the individual firm's metrics, strategy, price action, and public narrative.
+
+This **top-down** (or bottom-up) approach lets you see how broad economic conditions and sector trends trickle down to a single stock's performance—or vice versa.
+
+### Goals of This Effort
+
+1. **Create a Structured "Checklist"**
+
+   - By naming these four dimensions, we avoid skipping critical factors and maintain a clear, repeatable process.
+
+2. **Balance Quantitative vs. Qualitative Insights**
+
+   - We capture both the _hard data_ (financial health, market price trends) and the _softer_ but equally important aspects (management quality, investor psychology).
+
+3. **Enable Future "Lenses"**
+
+   - We reserve the word **lens** for specialized viewpoints—like a "Warren Buffett lens" or "Peter Lynch lens"—which can overlay specific priorities or styles on top of these four dimensions.
+
+4. **Accommodate Different Investing Styles**
+   - Whether you're a value investor, a growth-focused analyst, or a momentum trader, these four dimensions provide a universal foundation. You simply adjust which dimensions get the most emphasis.
+
+### How It Comes Together
+
+- **Fundamentals (Row 1):** Ask, "Is this a _good_ business?"
+
+  - **(A) Quantitative Fundamentals**: Are the financial metrics attractive and stable?
+  - **(B) Qualitative Fundamentals**: Does the company have a durable edge (moat) and capable leadership?
+
+- **Technicals (Row 2):** Ask, "How is the _market_ treating this business _right now_?"
+  - **(C) Quantitative Technicals**: Do price/volume trends suggest strength or weakness?
+  - **(D) Qualitative Technicals**: Are investors euphoric, fearful, or indifferent, and why?
+
+By evaluating each dimension at **Macro, Sector, and Company** levels, you build a **comprehensive view** of both the _intrinsic qualities_ of the stock and the _market conditions_ affecting its price and sentiment.
+
+### Final Note
+
+This **dimensions-based** approach offers a **clear, consistent** way to analyze any stock. Later, you can apply **special "lenses"** (investor-specific approaches) on top of these dimensions to align with a particular investing philosophy (e.g., Buffett's emphasis on moats, Lynch's focus on everyday business understanding, etc.).
+
+## UX Documentation
+
+### Conceptual Overview
 
 Four Corners Stocks is a multidimensional stock analysis platform designed to evaluate stocks through four distinct, complementary dimensions. The interface is built around a novel "circle nav stack" concept, leveraging spatial positioning to represent different analytical dimensions and their depth levels.
 
 It also promotes rapid analysis due to using keyboard navigation to cycle between and through dimensions.
 
-## Dimension Matrix
+### Dimension Matrix
 
 The Four Corners approach organizes stock analysis along two axes, with the screen position of each dimension matching its place in the conceptual matrix:
 
@@ -15,7 +92,7 @@ The Four Corners approach organizes stock analysis along two axes, with the scre
 | **Fundamentals** | **QTF** (Top-Left, Blue)      | **QLF** (Top-Right, Purple) |
 | **Technicals**   | **QTT** (Bottom-Left, Orange) | **QLT** (Bottom-Right, Red) |
 
-## The Four Dimensions
+### The Four Dimensions
 
 The application organizes stock analysis into four fundamental dimensions, each represented by a distinct color and positioned in a specific corner of the screen:
 
@@ -38,11 +115,11 @@ The application organizes stock analysis into four fundamental dimensions, each 
    - Examines market sentiment, trading psychology, and pattern recognition
    - Provides context for quantitative technical analysis
 
-## Circle Nav Stack Concept
+### Circle Nav Stack Concept
 
 Each dimension is represented by a "Circle Nav Stack" in its respective corner. These stacks are a key UX innovation:
 
-### Stack Composition
+#### Stack Composition
 
 - Each stack consists of three concentric quarter-circle elements
 - The circles represent different levels of analytical scope within a dimension:
@@ -50,7 +127,7 @@ Each dimension is represented by a "Circle Nav Stack" in its respective corner. 
   - Level 2 (middle circle): Sector/industry analysis - broader context
   - Level 3 (outermost circle): Macro/country level analysis - widest context
 
-### Visual Design
+#### Visual Design
 
 - Z-index ordering ensures that inner circles appear on top of outer circles, creating a 3D stack effect
 - Color opacity reinforces the proximity concept:
@@ -61,11 +138,11 @@ Each dimension is represented by a "Circle Nav Stack" in its respective corner. 
 - Active dimension/level has more pronounced visual highlighting
 - The outermost circle of the active dimension displays a pulsing animation to reinforce the current context
 
-## Navigation System
+### Navigation System
 
 The application implements an intuitive navigation system that allows users to move between dimensions and depth levels:
 
-### Keyboard Navigation
+#### Keyboard Navigation
 
 - **Left/Right Arrow Keys**: Navigate between dimensions in the following order:
 
@@ -79,12 +156,12 @@ The application implements an intuitive navigation system that allows users to m
     - Up = Move to a larger circle (higher level)
     - Down = Move to a smaller circle (lower level)
 
-### Mouse Navigation
+#### Mouse Navigation
 
 - Direct click on any circle in any stack to navigate directly to that dimension and level
 - Hovering over a circle displays a subtle highlight to indicate interactivity
 
-## Visual Feedback System
+### Visual Feedback System
 
 The interface provides clear visual cues to reinforce the user's current location:
 
@@ -100,7 +177,7 @@ The interface provides clear visual cues to reinforce the user's current locatio
   - Active elements have increased elevation (via shadow depth)
   - Corner navigation stacks have a tiered appearance
 
-## Design Philosophy
+### Design Philosophy
 
 The Four Corners approach embodies several key UX principles:
 
@@ -110,7 +187,7 @@ The Four Corners approach embodies several key UX principles:
 4. **Efficient Navigation**: Allowing both quick jumps (via direct clicks) and methodical exploration (via arrow keys)
 5. **Consistent Visual Language**: Using color, shape, and animation consistently to reinforce meaning
 
-## Content Organization
+### Content Organization
 
 Within each dimension and level, content is further organized into tabbed sections:
 
@@ -121,9 +198,9 @@ Within each dimension and level, content is further organized into tabbed sectio
 
 This creates a matrix of information that allows users to systematically explore stock data across dimensions, depth levels, and content categories.
 
-## Technical Implementation Reference
+### Technical Implementation Reference
 
-### Key Components
+#### Key Components
 
 1. **Navigation Containers**: Each corner has a dedicated container for its quarter-circle stack:
 
@@ -148,7 +225,7 @@ This creates a matrix of information that allows users to systematically explore
    let currentLevel = 1; // Current depth level (1-3)
    ```
 
-### Navigation Order Constants
+#### Navigation Order Constants
 
 The correct navigation order is defined in the JavaScript:
 
@@ -156,7 +233,7 @@ The correct navigation order is defined in the JavaScript:
 const navigationOrder = ['QTF', 'QLF', 'QTT', 'QLT']; // Order: top-left, bottom-right, top-right, bottom-left
 ```
 
-### Dimension-to-Position Mapping
+#### Dimension-to-Position Mapping
 
 Each dimension is mapped to a specific corner position that matches its place in the conceptual matrix:
 
@@ -190,7 +267,7 @@ Each dimension is mapped to a specific corner position that matches its place in
 }
 ```
 
-### Z-Index Hierarchy
+#### Z-Index Hierarchy
 
 For proper 3D effect, z-index values must be maintained:
 
@@ -225,7 +302,7 @@ For proper 3D effect, z-index values must be maintained:
 }
 ```
 
-### Color Theme Constants
+#### Color Theme Constants
 
 Each dimension has a specific color scheme, with opacity varying by level to indicate proximity to the analyzed stock:
 
@@ -254,7 +331,7 @@ Each dimension has a specific color scheme, with opacity varying by level to ind
 
 Hover states also follow this progression with slightly lower opacities (0.8, 0.4, 0.2) to maintain the visual hierarchy while indicating interactivity.
 
-### Keyboard Navigation Logic
+#### Keyboard Navigation Logic
 
 The keyboard navigation logic depends on the corner position:
 
@@ -274,7 +351,7 @@ if (isTopSet(currentSet)) {
 }
 ```
 
-### Page Update Process
+#### Page Update Process
 
 When changing dimensions or levels, the following steps occur:
 

@@ -1,6 +1,6 @@
 ---
 description: development rules
-globs: 
+globs: *.*
 ---
 # Cursor Rules for Four-Corners-Stocks Project
 
